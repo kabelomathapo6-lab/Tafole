@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Tafole design tokens.
+ * Source of truth: docs/designs/design.md/tafole_hospitality/DESIGN.md
+ * Tailwind v4: every --color-*, --font-*, --radius-* and --shadow-* below
+ * becomes a utility (bg-forest, text-pine, font-display, rounded-card, shadow-card ...).
+ */
+@theme {
+  /* Surfaces */
+  --color-canvas: #faf8f4;
+  --color-porcelain: #ffffff;
+  --color-oat: #f5f2eb;
+  --color-stone: #efece4;
+  --color-line: #d8d4c8;
+
+  /* Text */
+  --color-pine: #1c241d;
+  --color-olive: #525e53;
+  --color-muted: #859086;
+
+  /* Brand: deep forest green */
+  --color-forest: #1e3f20;
+  --color-forest-soft: #dce8dd;
+  --color-forest-ink: #132a14;
+
+  /* Accent: terracotta (urgent service, bill, high-priority tickets) */
+  --color-terracotta: #c85a32;
+  --color-terracotta-sunlit: #d96b43;
+  --color-terracotta-soft: #fce6dd;
+  --color-terracotta-ink: #7a2e14;
+
+  /* Operational states (colour = text/accent, -soft = container) */
+  --color-status-empty: #525e53;
+  --color-status-empty-soft: #e7e3d9;
+  --color-status-ordered: #2c6b7e;
+  --color-status-ordered-soft: #e0f0f4;
+  --color-status-waiting: #c9821e;
+  --color-status-waiting-ink: #7a4a0c;
+  --color-status-waiting-soft: #fcf0d8;
+  --color-status-bill: #c85a32;
+  --color-status-bill-soft: #fce6dd;
+  --color-status-ready: #2e6f40;
+  --color-status-ready-soft: #dff0e3;
+  --color-status-error: #b9382c;
+  --color-status-error-soft: #fde4e1;
+
+  /* Typography */
+  --font-display:
+    "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Shape */
+  --radius-control: 0.75rem;
+  --radius-card: 1rem;
+  --radius-card-lg: 1.25rem;
+
+  /* Elevation */
+  --shadow-card: 0 2px 8px rgba(28, 36, 29, 0.04);
+  --shadow-raised: 0 8px 24px rgba(28, 36, 29, 0.08);
+  --shadow-float: 0 8px 20px rgba(30, 63, 32, 0.22);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    background: var(--color-canvas);
+    color: var(--color-pine);
+    font-family: var(--font-sans);
+    -webkit-text-size-adjust: 100%;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    min-height: 100dvh;
+    /* keep content clear of notches and home indicators */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--color-pine);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-forest-soft);
+    outline-offset: 2px;
+  }
 }
