@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"text-pine":"#1C241D","inverse-surface":"#30312e","status-bill-requested":"#C85A32","error":"#ba1a1a","on-primary":"#ffffff","outline-border":"#D8D4C8","surface-container-highest":"#e4e2de","status-ordered-container":"#E0F0F4","on-tertiary":"#ffffff","surface-tint":"#446744","on-error-container":"#93000a","surface-bright":"#fbf9f5","surface":"#fbf9f5","status-error":"#B9382C","on-primary-container":"#132A14","surface-container":"#efeeea","surface-porcelain":"#FFFFFF","on-secondary-container":"#6f2000","on-primary-fixed-variant":"#2d4e2e","error-container":"#ffdad6","secondary":"#a23e18","status-waiting-container":"#FCF0D8","primary-container":"#DCE8DD","surface-container-high":"#eae8e4","inverse-on-surface":"#f2f0ed","secondary-container":"#FCE6DD","primary-fixed-dim":"#aad1a6","on-background":"#1b1c1a","outline":"#737970","on-tertiary-fixed":"#390c00","status-waiting":"#C9821E","surface-container-lowest":"#ffffff","primary-fixed":"#c5edc1","status-empty":"#E7E3D9","surface-oat":"#F5F2EB","on-error":"#ffffff","on-surface-variant":"#424840","on-secondary-fixed":"#390c00","background":"#fbf9f5","tertiary-fixed":"#ffdbcf","inverse-primary":"#aad1a6","on-tertiary-fixed-variant":"#802a05","surface-variant":"#e4e2de","surface-dim":"#dbdad6","on-surface":"#1b1c1a","secondary-fixed-dim":"#ffb59c","status-ready":"#2E6F40","outline-variant":"#c2c8be","primary":"#07290c","on-secondary-fixed-variant":"#822801","on-secondary":"#ffffff","tertiary-fixed-dim":"#ffb59c","surface-container-low":"#f5f3ef","secondary-fixed":"#ffdbcf","status-ordered":"#2C6B7E","status-error-container":"#FDE4E1","on-status-empty":"#525E53","tertiary-container":"#691e00","on-primary-fixed":"#012106","surface-stone":"#EFECE4","status-bill-requested-container":"#FCE6DD","tertiary":"#441100","status-ready-container":"#DFF0E3","text-olive":"#525E53","outline-muted":"#859086","on-tertiary-container":"#f58157"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xl":"2rem","space-md":"1rem","gutter-tablet":"1.25rem","space-2xl":"3rem","space-sm":"0.5rem","space-lg":"1.5rem","space-xs":"0.25rem","gutter-desktop":"1.5rem","gutter":"1rem","margin-tablet":"1.5rem","margin":"1rem","margin-desktop":"2rem"},"fontFamily":{"label-sm":["Plus Jakarta Sans"],"title-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"body-bold":["Inter"],"body-base":["Inter"],"caption-xs":["Inter"],"body-sm":["Inter"],"metric-lg":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"]},"fontSize":{"label-sm":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"title-sm":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"700"}],"display-lg-mobile":["26px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-bold":["16px",{"lineHeight":"24px","letterSpacing":"0","fontWeight":"600"}],"body-base":["16px",{"lineHeight":"24px","letterSpacing":"0","fontWeight":"400"}],"caption-xs":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"body-sm":["14px",{"lineHeight":"20px","letterSpacing":"0","fontWeight":"400"}],"metric-lg":["28px",{"lineHeight":"34px","letterSpacing":"-0.02em","fontWeight":"700"}],"display-lg":["32px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}};</script></head><body class="bg-surface font-body-base text-body-base text-on-surface antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(28,36,29,0.04)]"><div class="h-20 w-full px-space-md lg:px-gutter-desktop flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md min-w-0 flex-shrink-0"><div class="flex items-center gap-space-xs"><div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary flex-shrink-0 shadow-[0_2px_8px_rgba(7,41,12,0.18)]"><span class="material-symbols-outlined text-[22px]">dinner_dining</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-title-sm text-title-sm text-text-pine font-bold tracking-tight">Tafole KDS</span><span class="px-space-xs py-0.5 rounded-full bg-status-ready-container text-status-ready font-caption-xs text-caption-xs font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-status-ready animate-pulse"></span>Live</span></div><span class="font-caption-xs text-caption-xs text-text-olive truncate">Main Kitchen &amp; Hearth • Hot Line</span></div></div><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-surface-stone"><span class="material-symbols-outlined text-[16px] text-text-olive">schedule</span><span class="font-label-sm text-label-sm text-text-pine tabular-nums">19:48</span><span class="text-outline-muted text-[10px]">•</span><span class="font-caption-xs text-caption-xs text-text-olive">Active Shift</span></div></div><div class="flex items-center gap-space-xs lg:gap-space-sm overflow-x-auto py-1 flex-1 justify-center px-space-xs"><nav class="flex items-center gap-space-xs bg-surface-stone p-1 rounded-full flex-shrink-0" data-active-classes="bg-primary text-on-primary shadow-sm"><a aria-current="page" class="px-space-sm py-1 rounded-full font-label-sm transition-colors whitespace-nowrap bg-primary text-on-primary shadow-sm" data-path="live-kitchen-display" href="#">All Stations (9)</a><a class="px-space-sm py-1 rounded-full font-label-sm text-label-sm text-text-olive hover:text-text-pine transition-colors whitespace-nowrap" data-path="wood-oven-station" href="#">Wood Oven (3)</a><a class="px-space-sm py-1 rounded-full font-label-sm text-label-sm text-text-olive hover:text-text-pine transition-colors whitespace-nowrap" data-path="charcoal-grill-station" href="#">Charcoal Grill (4)</a><a class="px-space-sm py-1 rounded-full font-label-sm text-label-sm text-text-olive hover:text-text-pine transition-colors whitespace-nowrap" data-path="cold-pass-station" href="#">Cold Pass (2)</a></nav><div class="hidden 2xl:flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-surface-container-high"><span class="font-caption-xs text-caption-xs text-text-pine font-semibold">8 Active</span><span class="text-outline-muted text-[10px]">•</span><span class="font-caption-xs text-caption-xs text-text-olive">Avg: 11m</span><span class="text-outline-muted text-[10px]">•</span><span class="px-1.5 py-0.5 rounded-full bg-status-waiting-container text-status-waiting font-caption-xs text-caption-xs font-bold">1 Delayed &gt;15m</span></div></div><div class="flex items-center gap-space-xs lg:gap-space-sm flex-shrink-0"><button class="h-10 px-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-colors flex items-center gap-1.5 text-text-pine focus:outline-none" type="button"><span class="material-symbols-outlined text-[18px] text-status-ready">volume_up</span><span class="hidden sm:inline font-label-sm text-label-sm">Chime On</span></button><a class="h-10 px-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high text-text-pine hover:text-text-pine transition-colors flex items-center gap-1.5 focus:outline-none" data-path="recall-history" href="#"><span class="material-symbols-outlined text-[18px] text-text-olive">history</span><span class="hidden md:inline font-label-sm text-label-sm">Recall</span></a><button aria-label="Toggle Fullscreen" class="w-10 h-10 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-text-pine transition-colors flex items-center justify-center focus:outline-none" type="button"><span class="material-symbols-outlined text-[20px]">fullscreen</span></button><div class="flex items-center gap-space-xs pl-space-xs border-l border-outline-border/60"><div class="flex flex-col text-right hidden lg:flex"><span class="font-label-sm text-label-sm text-text-pine leading-none">Chef Dumisani</span><span class="font-caption-xs text-caption-xs text-text-olive">Head Chef</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-56px)] px-space-md lg:px-gutter-desktop"><div class="flex flex-col w-full">
+<!-- Operational Sub-Header Bar (KDS Quick Filters & Hearth Line Status) -->
+<div class="w-full bg-surface-container-low px-space-md py-space-sm rounded-xl shadow-sm mb-space-md flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-status-ready animate-ping"></span>
+<span class="font-title-sm text-title-sm text-text-pine font-bold uppercase tracking-wider">Hearth &amp; Grill Expo</span>
+</div>
+<div class="hidden md:flex items-center gap-space-xs text-text-olive font-body-sm text-body-sm">
+<span class="bg-surface-stone px-2 py-0.5 rounded text-text-pine font-semibold">Shift: Evening Rush</span>
+<span>•</span>
+<span>Lead Expo: Chef Dumisani</span>
+<span>•</span>
+<span class="text-status-bill-requested font-bold">1 Alert Pending</span>
+</div>
+</div>
+<!-- Active Station Quick Tags -->
+<div class="flex items-center gap-space-xs overflow-x-auto py-0.5">
+<span class="px-2.5 py-1 rounded-full text-caption-xs font-caption-xs font-bold uppercase bg-tertiary text-on-tertiary shadow-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span> Wood Oven 450°C
+      </span>
+<span class="px-2.5 py-1 rounded-full text-caption-xs font-caption-xs font-bold uppercase bg-inverse-surface text-inverse-on-surface shadow-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-waiting"></span> Charcoal Grill High
+      </span>
+<span class="px-2.5 py-1 rounded-full text-caption-xs font-caption-xs font-bold uppercase bg-status-ordered-container text-status-ordered shadow-sm flex items-center gap-1">
+        Cold Pass Chill
+      </span>
+<div class="h-6 w-[1px] bg-outline-border mx-1 hidden sm:block"></div>
+<button class="h-8 px-2.5 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-label-sm shadow-sm hover:bg-surface-stone transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span class="hidden sm:inline">Sound: Loud</span>
+</button>
+</div>
+</div>
+<!-- 3-COLUMN KANBAN BOARD (Locked Tablet Landscape Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md items-start w-full">
+<!-- ========================================== -->
+<!-- COLUMN 1: NEW / RECEIVED (3 TICKETS)       -->
+<!-- ========================================== -->
+<div class="flex flex-col bg-surface-stone/70 p-space-sm rounded-xl">
+<!-- Column Header -->
+<div class="flex items-center justify-between pb-space-sm px-space-xs">
+<div class="flex items-center gap-space-xs">
+<div class="w-3 h-3 rounded-full bg-status-ordered animate-pulse"></div>
+<h2 class="font-headline-md text-headline-md text-text-pine font-black tracking-tight uppercase">New / Received</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-status-ordered-container text-status-ordered font-title-sm text-title-sm font-bold shadow-sm">3</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-text-olive uppercase tracking-wider font-semibold">Priority: Oldest</span>
+</div>
+<!-- Ticket Stack -->
+<div class="flex flex-col gap-space-md">
+<!-- Ticket 1: Table 04 -->
+<article class="bg-surface-porcelain rounded-xl shadow-md p-space-sm flex flex-col justify-between transition-transform duration-150 hover:-translate-y-0.5">
+<!-- Ticket Header -->
+<div class="flex items-start justify-between gap-space-xs pb-space-xs bg-surface-container-low/60 -mx-space-sm -mt-space-sm p-space-sm rounded-t-xl">
+<div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-black text-text-pine tracking-tighter leading-none">TBL 04</span>
+<span class="font-label-sm text-label-sm text-text-olive font-bold">#TAF-0485</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-stone text-text-pine font-caption-xs text-caption-xs font-semibold">Dine-in</span>
+<span class="text-text-olive font-caption-xs text-caption-xs">Srv: <strong class="text-text-pine">Sipho</strong></span>
+</div>
+</div>
+<!-- Timer Badge -->
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-1 rounded-lg bg-status-ready-container text-status-ready font-title-sm text-title-sm font-bold tabular-nums shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">timer</span> 02:15
+              </span>
+<span class="text-[10px] text-text-olive uppercase tracking-wider mt-0.5 font-bold">On Pace</span>
+</div>
+</div>
+<!-- Allergy Notice Banner -->
+<div class="mt-space-xs bg-status-waiting-container p-2 rounded-lg flex items-center gap-1.5 text-status-waiting font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+<span>Allergy Alert: Sesame seeds on table!</span>
+</div>
+<!-- Items List -->
+<div class="py-space-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">3×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Wagyu Hardwood Burger</span>
+<span class="font-caption-xs text-caption-xs text-secondary font-semibold">Medium Rare • 1x NO ONIONS</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-inverse-surface text-inverse-on-surface text-[11px] font-bold uppercase flex-shrink-0">Grill</span>
+</div>
+<div class="flex items-start justify-between gap-2 pt-1.5">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">2×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Artisanal Cut Chips</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Truffle Mayo</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-stone text-text-pine text-[11px] font-bold uppercase flex-shrink-0">Sides</span>
+</div>
+<div class="flex items-start justify-between gap-2 pt-1.5">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">2×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Craft Amber Ale</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Poured at bar</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-status-ordered-container text-status-ordered text-[11px] font-bold uppercase flex-shrink-0">Bar / Expo</span>
+</div>
+</div>
+<!-- Tactile Action Button -->
+<button class="w-full h-12 rounded-xl bg-status-bill-requested text-on-primary font-headline-md text-headline-md tracking-wide uppercase flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all mt-space-xs hover:brightness-110" type="button">
+<span>Start Prep</span>
+<span class="material-symbols-outlined text-[22px]">arrow_forward</span>
+</button>
+</article>
+<!-- Ticket 2: Table 11 (Guest QR Direct) -->
+<article class="bg-surface-porcelain rounded-xl shadow-md p-space-sm flex flex-col justify-between transition-transform duration-150 hover:-translate-y-0.5">
+<div class="flex items-start justify-between gap-space-xs pb-space-xs bg-surface-container-low/60 -mx-space-sm -mt-space-sm p-space-sm rounded-t-xl">
+<div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-black text-text-pine tracking-tighter leading-none">TBL 11</span>
+<span class="font-label-sm text-label-sm text-text-olive font-bold">#TAF-0487</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="px-2 py-0.5 rounded-md bg-status-ordered-container text-status-ordered font-caption-xs text-caption-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">qr_code_scanner</span> QR Guest Order
+                </span>
+<span class="text-text-olive font-caption-xs text-caption-xs">Direct Web</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-1 rounded-lg bg-status-ready-container text-status-ready font-title-sm text-title-sm font-bold tabular-nums shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">timer</span> 00:45
+              </span>
+<span class="text-[10px] text-text-olive uppercase tracking-wider mt-0.5 font-bold">Just In</span>
+</div>
+</div>
+<div class="py-space-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">1×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Burrata &amp; Charred Peach Salad</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Aged balsamic reduction</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-status-ordered-container text-status-ordered text-[11px] font-bold uppercase flex-shrink-0">Cold Pass</span>
+</div>
+<div class="flex items-start justify-between gap-2 pt-1.5">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">1×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Woodfired Garlic &amp; Rosemary Focaccia</span>
+<span class="font-caption-xs text-caption-xs text-secondary font-semibold">Fire immediate</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary-container text-secondary text-[11px] font-bold uppercase flex-shrink-0">Wood Oven</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-xl bg-status-bill-requested text-on-primary font-headline-md text-headline-md tracking-wide uppercase flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all mt-space-xs hover:brightness-110" type="button">
+<span>Start Prep</span>
+<span class="material-symbols-outlined text-[22px]">arrow_forward</span>
+</button>
+</article>
+<!-- Ticket 3: Table 02 -->
+<article class="bg-surface-porcelain rounded-xl shadow-md p-space-sm flex flex-col justify-between transition-transform duration-150 hover:-translate-y-0.5">
+<div class="flex items-start justify-between gap-space-xs pb-space-xs bg-surface-container-low/60 -mx-space-sm -mt-space-sm p-space-sm rounded-t-xl">
+<div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-black text-text-pine tracking-tighter leading-none">TBL 02</span>
+<span class="font-label-sm text-label-sm text-text-olive font-bold">#TAF-0489</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-stone text-text-pine font-caption-xs text-caption-xs font-semibold">Dine-in</span>
+<span class="text-text-olive font-caption-xs text-caption-xs">Srv: <strong class="text-text-pine">Zola</strong></span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-1 rounded-lg bg-status-waiting-container text-status-waiting font-title-sm text-title-sm font-bold tabular-nums shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 04:10
+              </span>
+<span class="text-[10px] text-status-waiting uppercase tracking-wider mt-0.5 font-bold">Waiting</span>
+</div>
+</div>
+<div class="py-space-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">2×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Pan-Seared King Oyster Mushrooms</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Parsnip silk puree</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary-container text-[11px] font-bold uppercase flex-shrink-0">Sauté</span>
+</div>
+<div class="flex items-start justify-between gap-2 pt-1.5">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">1×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Heirloom Tomato Tart</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Whipped goat ricotta</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary-container text-secondary text-[11px] font-bold uppercase flex-shrink-0">Wood Oven</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-xl bg-status-bill-requested text-on-primary font-headline-md text-headline-md tracking-wide uppercase flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all mt-space-xs hover:brightness-110" type="button">
+<span>Start Prep</span>
+<span class="material-symbols-outlined text-[22px]">arrow_forward</span>
+</button>
+</article>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- COLUMN 2: PREPARING / COOKING (4 TICKETS) -->
+<!-- ========================================== -->
+<div class="flex flex-col bg-surface-stone/70 p-space-sm rounded-xl">
+<!-- Column Header -->
+<div class="flex items-center justify-between pb-space-sm px-space-xs">
+<div class="flex items-center gap-space-xs">
+<div class="w-3 h-3 rounded-full bg-status-waiting animate-ping"></div>
+<h2 class="font-headline-md text-headline-md text-text-pine font-black tracking-tight uppercase">Preparing</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-status-waiting-container text-status-waiting font-title-sm text-title-sm font-bold shadow-sm">4</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-status-bill-requested uppercase tracking-wider font-bold">1 Late Order</span>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Ticket 4: Table 07 (CRITICAL CONTINUITY - Screen 1, 2, 3 Table 7) -->
+<article class="bg-surface-porcelain rounded-xl shadow-lg p-space-sm flex flex-col justify-between relative overflow-hidden ring-2 ring-status-error/40">
+<!-- Late Urgent Indicator Banner -->
+<div class="bg-status-error text-on-error px-space-sm py-1.5 -mx-space-sm -mt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm uppercase tracking-wide font-black">
+<span class="material-symbols-outlined text-[18px]">alarm</span>
+<span>LATE &gt; 12m (EXPEDITE IMMEDIATELY)</span>
+</div>
+<span class="font-caption-xs text-caption-xs font-bold uppercase bg-on-error/20 px-1.5 py-0.5 rounded">Rush VIP</span>
+</div>
+<!-- Header -->
+<div class="flex items-start justify-between gap-space-xs pt-space-xs pb-space-xs">
+<div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-black text-status-error tracking-tighter leading-none">TBL 07</span>
+<span class="font-label-sm text-label-sm text-text-pine font-bold">#TAF-0482</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="px-2 py-0.5 rounded-md bg-secondary-container text-secondary font-caption-xs text-caption-xs font-bold">Guest QR • 3 Guests</span>
+<span class="text-text-olive font-caption-xs text-caption-xs">Srv: <strong class="text-text-pine">Sipho</strong></span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-3 py-1.5 rounded-lg bg-status-error text-on-error font-headline-md text-headline-md font-black tabular-nums shadow-sm flex items-center gap-1 animate-pulse">
+<span class="material-symbols-outlined text-[18px]">warning</span> 14:20
+              </span>
+<span class="text-[10px] text-status-error uppercase tracking-wider mt-0.5 font-bold">Fired 12m ago (Dumisani)</span>
+</div>
+</div>
+<!-- Items Breakdown with Statuses -->
+<div class="py-space-sm flex flex-col gap-2">
+<!-- Item 1: Braised Lamb Shank (Done/Checked) -->
+<div class="flex items-start justify-between gap-2 p-2 rounded-lg bg-status-ready-container/40">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-status-ready text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">✓</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug line-through opacity-70">1× Braised Karoo Lamb Shank</span>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">Plated • Extra rosemary jus on side</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-status-ready text-on-primary text-[11px] font-bold uppercase flex-shrink-0">Braise: DONE</span>
+</div>
+<!-- Item 2: Woodfired Margherita (In Oven) -->
+<div class="flex items-start justify-between gap-2 p-2 rounded-lg bg-secondary-container/40">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-secondary text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">1×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Woodfired Margherita</span>
+<span class="font-caption-xs text-caption-xs text-secondary font-bold">Well done crust, extra fresh torn basil</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary text-on-secondary text-[11px] font-bold uppercase flex-shrink-0 animate-pulse">In Oven 450°C</span>
+</div>
+<!-- Item 3: Artisanal Rooibos & Citrus Tea -->
+<div class="flex items-start justify-between gap-2 p-2 rounded-lg bg-surface-stone/50">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-olive font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">✓</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug line-through opacity-60">1× Artisanal Rooibos &amp; Citrus Tea</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Delivered to table by Sipho</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-stone text-text-olive text-[11px] font-bold uppercase flex-shrink-0">Bar: Sent</span>
+</div>
+</div>
+<!-- Dual Tactile Action Buttons -->
+<div class="grid grid-cols-4 gap-space-xs mt-space-xs">
+<button class="col-span-1 h-12 rounded-xl bg-surface-container-high text-text-pine font-label-sm text-label-sm font-bold uppercase hover:bg-surface-stone active:scale-95 transition-all flex items-center justify-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span class="hidden sm:inline">Recall</span>
+</button>
+<button class="col-span-3 h-12 rounded-xl bg-primary text-on-primary font-headline-md text-headline-md tracking-wide uppercase flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all hover:bg-on-primary-container" type="button">
+<span class="material-symbols-outlined text-[24px]">done_all</span>
+<span>Mark All Ready ✓</span>
+</button>
+</div>
+</article>
+<!-- Ticket 5: Table 08 -->
+<article class="bg-surface-porcelain rounded-xl shadow-md p-space-sm flex flex-col justify-between transition-transform duration-150 hover:-translate-y-0.5">
+<div class="flex items-start justify-between gap-space-xs pb-space-xs bg-surface-container-low/60 -mx-space-sm -mt-space-sm p-space-sm rounded-t-xl">
+<div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-black text-text-pine tracking-tighter leading-none">TBL 08</span>
+<span class="font-label-sm text-label-sm text-text-olive font-bold">#TAF-0481</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-stone text-text-pine font-caption-xs text-caption-xs font-semibold">Dine-in</span>
+<span class="text-text-olive font-caption-xs text-caption-xs">Srv: <strong class="text-text-pine">Thabo</strong></span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-1 rounded-lg bg-status-waiting-container text-status-waiting font-title-sm text-title-sm font-bold tabular-nums shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 09:30
+              </span>
+<span class="text-[10px] text-text-olive uppercase tracking-wider mt-0.5 font-bold">Mid Fire</span>
+</div>
+</div>
+<div class="py-space-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">2×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Flame-Grilled Ribeye 300g</span>
+<span class="font-caption-xs text-caption-xs text-secondary font-bold">1x Medium, 1x Medium-Rare</span>
+<span class="font-caption-xs text-caption-xs text-text-olive mt-0.5">Crispy rosemary potatoes extra crispy</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-inverse-surface text-inverse-on-surface text-[11px] font-bold uppercase flex-shrink-0">Grill Pass</span>
+</div>
+<div class="flex items-start justify-between gap-2 pt-1.5">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">1×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Charred Tenderstem Broccoli</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Chili garlic butter</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-stone text-text-pine text-[11px] font-bold uppercase flex-shrink-0">Sides</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-xl bg-primary text-on-primary font-headline-md text-headline-md tracking-wide uppercase flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all mt-space-xs hover:bg-on-primary-container" type="button">
+<span class="material-symbols-outlined text-[22px]">done</span>
+<span>Mark All Ready ✓</span>
+</button>
+</article>
+<!-- Ticket 6: Table 05 -->
+<article class="bg-surface-porcelain rounded-xl shadow-md p-space-sm flex flex-col justify-between transition-transform duration-150 hover:-translate-y-0.5">
+<div class="flex items-start justify-between gap-space-xs pb-space-xs bg-surface-container-low/60 -mx-space-sm -mt-space-sm p-space-sm rounded-t-xl">
+<div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-black text-text-pine tracking-tighter leading-none">TBL 05</span>
+<span class="font-label-sm text-label-sm text-text-olive font-bold">#TAF-0480</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-stone text-text-pine font-caption-xs text-caption-xs font-semibold">2 Guests</span>
+<span class="text-text-olive font-caption-xs text-caption-xs">Srv: <strong class="text-text-pine">Zola</strong></span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-1 rounded-lg bg-surface-stone text-text-pine font-title-sm text-title-sm font-bold tabular-nums shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 06:15
+              </span>
+<span class="text-[10px] text-text-olive uppercase tracking-wider mt-0.5 font-bold">Cooking</span>
+</div>
+</div>
+<div class="py-space-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">2×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Woodfired Diavola Pizza</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Calabrian chili, fior di latte</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary-container text-secondary text-[11px] font-bold uppercase flex-shrink-0">Wood Oven</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-xl bg-primary text-on-primary font-headline-md text-headline-md tracking-wide uppercase flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all mt-space-xs hover:bg-on-primary-container" type="button">
+<span class="material-symbols-outlined text-[22px]">done</span>
+<span>Mark All Ready ✓</span>
+</button>
+</article>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- COLUMN 3: READY / PASS (2 TICKETS)         -->
+<!-- ========================================== -->
+<div class="flex flex-col bg-surface-stone/70 p-space-sm rounded-xl">
+<!-- Column Header -->
+<div class="flex items-center justify-between pb-space-sm px-space-xs">
+<div class="flex items-center gap-space-xs">
+<div class="w-3 h-3 rounded-full bg-status-ready"></div>
+<h2 class="font-headline-md text-headline-md text-text-pine font-black tracking-tight uppercase">Ready / Pass</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-status-ready-container text-status-ready font-title-sm text-title-sm font-bold shadow-sm">2</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-status-ready uppercase tracking-wider font-bold">Food Runner Alert</span>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Ticket 7: Table 09 (Matches waiter tablet Screen 2 "MAINS READY" at pass!) -->
+<article class="bg-surface-porcelain rounded-xl shadow-lg p-space-sm flex flex-col justify-between transition-transform duration-150 hover:-translate-y-0.5 ring-2 ring-status-ready/50">
+<!-- Notification Runner Bar -->
+<div class="bg-status-ready-container px-space-sm py-1 -mx-space-sm -mt-space-sm flex items-center justify-between text-status-ready rounded-t-xl">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[18px] animate-bounce">notifications_active</span>
+<span>RUNNER ALERT: Waiter Sipho Pinged</span>
+</div>
+<span class="font-caption-xs text-caption-xs font-bold uppercase bg-status-ready text-on-primary px-1.5 py-0.5 rounded">Pass 01</span>
+</div>
+<div class="flex items-start justify-between gap-space-xs pt-space-xs pb-space-xs">
+<div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-black text-status-ready tracking-tighter leading-none">TBL 09</span>
+<span class="font-label-sm text-label-sm text-text-pine font-bold">#TAF-0478</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-stone text-text-pine font-caption-xs text-caption-xs font-semibold">Mains Ready</span>
+<span class="text-text-olive font-caption-xs text-caption-xs">Srv: <strong class="text-text-pine">Sipho</strong></span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-1 rounded-lg bg-status-ready-container text-status-ready font-title-sm text-title-sm font-bold tabular-nums shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> 01:40
+              </span>
+<span class="text-[10px] text-text-olive uppercase tracking-wider mt-0.5 font-bold">At Hot Pass</span>
+</div>
+</div>
+<!-- Items Ready -->
+<div class="py-space-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2 p-1.5 rounded-lg bg-status-ready-container/30">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-status-ready text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">2×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Ribeye Steak 300g</span>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">Both Medium-Rare • Plated hot</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-status-ready text-on-primary text-[11px] font-bold uppercase flex-shrink-0">Pass 1</span>
+</div>
+<div class="flex items-start justify-between gap-2 p-1.5 rounded-lg bg-status-ready-container/30">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-status-ready text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">1×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Herb Butter Corn</span>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">Garnished with smoked salt</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-status-ready text-on-primary text-[11px] font-bold uppercase flex-shrink-0">Pass 1</span>
+</div>
+</div>
+<!-- Runner Status Sub-text -->
+<div class="text-[12px] text-text-olive font-caption-xs mb-space-xs flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-status-ready"></span>
+<span>Runner notified 90s ago • Runner arriving at pass</span>
+</div>
+<!-- Giant Bump Action Button -->
+<button class="w-full h-14 rounded-xl bg-primary hover:bg-on-primary-container text-on-primary font-headline-md text-headline-md tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[28px]">inventory_2</span>
+<span>Clear / Bumped to Table ✓</span>
+</button>
+</article>
+<!-- Ticket 8: Table 03 -->
+<article class="bg-surface-porcelain rounded-xl shadow-md p-space-sm flex flex-col justify-between transition-transform duration-150 hover:-translate-y-0.5">
+<div class="flex items-start justify-between gap-space-xs pb-space-xs bg-surface-container-low/60 -mx-space-sm -mt-space-sm p-space-sm rounded-t-xl">
+<div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-black text-status-ready tracking-tighter leading-none">TBL 03</span>
+<span class="font-label-sm text-label-sm text-text-olive font-bold">#TAF-0477</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-stone text-text-pine font-caption-xs text-caption-xs font-semibold">Dessert Course</span>
+<span class="text-text-olive font-caption-xs text-caption-xs">Srv: <strong class="text-text-pine">Sipho</strong></span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-1 rounded-lg bg-status-waiting-container text-status-waiting font-title-sm text-title-sm font-bold tabular-nums shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">timer</span> 03:10
+              </span>
+<span class="text-[10px] text-text-olive uppercase tracking-wider mt-0.5 font-bold">Waiting Runner</span>
+</div>
+</div>
+<div class="py-space-sm flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2 p-1 rounded">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">1×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Malva Pudding with Amarula Crème</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Warm dessert pass</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-status-ready-container text-status-ready text-[11px] font-bold uppercase flex-shrink-0">Pastry</span>
+</div>
+<div class="flex items-start justify-between gap-2 pt-1">
+<div class="flex items-start gap-2">
+<span class="w-6 h-6 rounded-md bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">2×</span>
+<div class="flex flex-col">
+<span class="font-body-bold text-body-bold text-text-pine leading-snug">Rooibos Espresso</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Crema intact</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-status-ordered-container text-status-ordered text-[11px] font-bold uppercase flex-shrink-0">Bar</span>
+</div>
+</div>
+<button class="w-full h-14 rounded-xl bg-primary hover:bg-on-primary-container text-on-primary font-headline-md text-headline-md tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-all mt-space-xs" type="button">
+<span class="material-symbols-outlined text-[28px]">inventory_2</span>
+<span>Clear / Bumped to Table ✓</span>
+</button>
+</article>
+</div>
+</div>
+</div>
+<!-- Bottom Expo Summary Dock for Kitchen Expeditor -->
+<div class="mt-space-lg w-full bg-surface-porcelain p-space-md rounded-xl shadow-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-lg flex-wrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-status-ready text-[24px]">heat_pump</span>
+<div>
+<span class="font-caption-xs text-caption-xs text-text-olive uppercase tracking-wider block">Kitchen Velocity</span>
+<span class="font-title-sm text-title-sm text-text-pine font-bold">11m 45s <span class="font-caption-xs text-caption-xs text-status-ready font-medium">(-2m vs avg)</span></span>
+</div>
+</div>
+<div class="h-8 w-[1px] bg-outline-border hidden md:block"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[24px]">local_fire_department</span>
+<div>
+<span class="font-caption-xs text-caption-xs text-text-olive uppercase tracking-wider block">Wood Hearth Active Orders</span>
+<span class="font-title-sm text-title-sm text-text-pine font-bold">3 Pizzas / 1 Bread</span>
+</div>
+</div>
+<div class="h-8 w-[1px] bg-outline-border hidden md:block"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-inverse-surface text-[24px]">skillet</span>
+<div>
+<span class="font-caption-xs text-caption-xs text-text-olive uppercase tracking-wider block">Charcoal Grill Capacity</span>
+<span class="font-title-sm text-title-sm text-text-pine font-bold">5 Steaks / 3 Burgers (85% Busy)</span>
+</div>
+</div>
+</div>
+<!-- Quick Bump Shortcuts & Chime Action -->
+<div class="flex items-center gap-space-sm">
+<button class="h-11 px-space-md rounded-xl bg-surface-stone text-text-pine font-label-sm text-label-sm font-bold hover:bg-surface-container-high transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications_paused</span>
+<span>Mute 5m</span>
+</button>
+<button class="h-11 px-space-md rounded-xl bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm font-bold shadow hover:brightness-110 transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[20px]">campaign</span>
+<span>Page Floor Waiters</span>
+</button>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-low py-space-sm shadow-[0_-1px_6px_rgba(28,36,29,0.03)]"><div class="w-full px-space-md lg:px-gutter-desktop flex flex-wrap items-center justify-between text-text-olive font-caption-xs text-caption-xs gap-space-xs"><span>Tafole KDS v2.4 • Terminal Station 03 (Kitchen Central Pass)</span><div class="flex items-center gap-space-md"><span>Heartbeat: Optimal (24ms)</span><a class="text-text-olive hover:text-text-pine font-label-sm text-label-sm transition-colors" data-path="kds-terminal-settings" href="#">Terminal Settings</a></div></div></footer></body></html>

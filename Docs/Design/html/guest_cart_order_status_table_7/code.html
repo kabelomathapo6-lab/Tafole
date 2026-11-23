@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "text-olive": "#525E53", "surface-porcelain": "#FFFFFF", "on-primary-fixed": "#012106", "primary": "#07290c", "on-error": "#ffffff", "on-surface": "#1b1c1a", "secondary-container": "#fe8357", "tertiary-fixed-dim": "#ffb59c", "tertiary-fixed": "#ffdbcf", "on-secondary-fixed": "#390c00", "status-empty": "#E7E3D9", "primary-container": "#DCE8DD", "surface-dim": "#dbdad6", "status-ready-container": "#DFF0E3", "outline": "#737970", "surface-bright": "#fbf9f5", "status-waiting": "#C9821E", "status-waiting-container": "#FCF0D8", "surface-container": "#efeeea", "on-primary-fixed-variant": "#2d4e2e", "on-error-container": "#93000a", "on-tertiary-fixed": "#390c00", "outline-muted": "#859086", "surface-oat": "#F5F2EB", "outline-border": "#D8D4C8", "on-background": "#1b1c1a", "on-primary-container": "#86ab83", "on-secondary": "#ffffff", "surface-container-low": "#f5f3ef", "surface-stone": "#EFECE4", "inverse-primary": "#aad1a6", "surface-container-lowest": "#ffffff", "on-status-empty": "#525E53", "primary-fixed": "#c5edc1", "tertiary": "#441100", "status-error-container": "#FDE4E1", "surface-container-highest": "#e4e2de", "inverse-on-surface": "#f2f0ed", "outline-variant": "#c2c8be", "surface-tint": "#446744", "status-bill-requested": "#C85A32", "text-pine": "#1C241D", "surface-container-high": "#eae8e4", "on-surface-variant": "#424840", "status-error": "#B9382C", "on-secondary-container": "#6f2000", "inverse-surface": "#30312e", "on-tertiary-container": "#f58157", "primary-fixed-dim": "#aad1a6", "surface-variant": "#e4e2de", "background": "#fbf9f5", "secondary-fixed-dim": "#ffb59c", "error-container": "#ffdad6", "surface": "#fbf9f5", "secondary-fixed": "#ffdbcf", "on-tertiary": "#ffffff", "error": "#ba1a1a", "status-ready": "#2E6F40", "on-primary": "#ffffff", "status-ordered-container": "#E0F0F4", "status-ordered": "#2C6B7E", "on-tertiary-fixed-variant": "#802a05", "status-bill-requested-container": "#FCE6DD", "on-secondary-fixed-variant": "#822801", "tertiary-container": "#691e00", "secondary": "#a23e18" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin-desktop": "2rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "space-xs": "0.25rem", "space-xl": "2rem", "space-2xl": "3rem", "gutter": "1rem", "space-md": "1rem", "space-lg": "1.5rem", "margin": "1rem", "margin-tablet": "1.5rem", "gutter-tablet": "1.25rem" }, fontFamily: { "body-bold": ["Inter"], "metric-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "caption-xs": ["Inter"], "display-lg": ["Plus Jakarta Sans"], "title-sm": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-sm": ["Plus Jakarta Sans"], "body-base": ["Inter"] }, fontSize: { "body-bold": ["16px", { lineHeight: "24px", letterSpacing: "0", fontWeight: "600" }], "metric-lg": ["28px", { lineHeight: "34px", letterSpacing: "-0.02em", fontWeight: "700" }], "display-lg-mobile": ["26px", { lineHeight: "32px", letterSpacing: "-0.02em", fontWeight: "700" }], "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.015em", fontWeight: "700" }], "caption-xs": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }], "display-lg": ["32px", { lineHeight: "38px", letterSpacing: "-0.02em", fontWeight: "700" }], "title-sm": ["18px", { lineHeight: "24px", letterSpacing: "-0.01em", fontWeight: "600" }], "body-sm": ["14px", { lineHeight: "20px", letterSpacing: "0", fontWeight: "400" }], "label-sm": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "600" }], "body-base": ["16px", { lineHeight: "24px", letterSpacing: "0", fontWeight: "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100%;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface text-on-surface font-body-base text-body-base flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(28,36,29,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="Tafole Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBYos3Cl_tr1j58rvdwduwzIUawuq64fACJdjSF1UJjgN3tlDFm5IWIYF4gyv6rA3tgjlqYjh9NCtGwqzkV8kGmkkht-5D6AETdjMxDmxnsAzzn-MHSz9ZVbBVENMHo0PmZ5iLUCRlF5vVsq8rQhHxkHYUbpnH-YkYp36iDJUe3NrtqpPiV1EChbwFn7Ju3Qf1_CmIYwRsIozllK0vdXLPDZNatbTNJp96ZryP3R9et"/><div class="flex flex-col"><span class="font-label-sm text-label-sm text-primary tracking-wide">TAFOLE</span><span class="font-title-sm text-title-sm text-text-pine">Menu</span></div></div><div class="flex items-center gap-space-xs"><span class="px-space-sm py-1 rounded-full bg-primary-container text-on-primary-fixed-variant font-label-sm text-label-sm flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-status-ready"></span>Table 04</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-10">
+<!-- Toast Notification Overlay -->
+<div class="fixed top-20 left-4 right-4 z-50 transform -translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="service-toast">
+<div class="bg-primary text-on-primary px-space-md py- space-sm rounded-xl shadow-xl flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<span class="font-body-bold text-body-sm text-surface-porcelain" id="toast-message">Waiter notified for Table 7</span>
+</div>
+<button class="text-on-primary-fixed-variant hover:text-surface-porcelain" onclick="dismissToast()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Table Context & Active Order Indicator -->
+<div class="px-margin pt-space-xs pb-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-2.5 h-2.5 rounded-full bg-status-ready animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-text-pine">Table 07 • Dine-in</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-text-olive bg-surface-stone px-2 py-0.5 rounded-full">Ticket #TAF-0482</span>
+</div>
+<!-- HERO: Live Order Status Tracker -->
+<section class="px-margin mb-space-md">
+<div class="bg-surface-porcelain rounded-2xl p-space-md shadow-sm">
+<div class="flex items-start justify-between mb-space-md">
+<div>
+<span class="font-caption-xs text-caption-xs text-secondary font-semibold uppercase tracking-wider">Live Kitchen Progress</span>
+<h2 class="font-headline-md text-headline-md text-text-pine mt-0.5">Preparing Mains</h2>
+</div>
+<div class="flex items-center gap-1.5 bg-status-waiting-container px-2.5 py-1 rounded-full text-status-waiting">
+<span class="material-symbols-outlined text-[16px] animate-spin">timelapse</span>
+<span class="font-label-sm text-label-sm font-bold">~14 min</span>
+</div>
+</div>
+<!-- Stepper Graphic -->
+<div class="relative flex items-center justify-between mb-space-md px-2">
+<div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1 bg-surface-container -z-0">
+<div class="h-full bg-status-ready w-1/2 transition-all duration-700"></div>
+</div>
+<!-- Step 1: Received -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-8 h-8 rounded-full bg-status-ready text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="font-caption-xs text-caption-xs font-semibold text-text-pine">Received</span>
+<span class="font-caption-xs text-[10px] text-text-olive">19:42</span>
+</div>
+<!-- Step 2: Preparing (Active) -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center ring-4 ring-primary-container shadow-sm animate-pulse">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">skillet</span>
+</div>
+<span class="font-caption-xs text-caption-xs font-bold text-primary">In Kitchen</span>
+<span class="font-caption-xs text-[10px] text-secondary font-medium">Cooking</span>
+</div>
+<!-- Step 3: Ready -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-8 h-8 rounded-full bg-surface-stone text-outline-muted flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">room_service</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-outline-muted">To Table</span>
+<span class="font-caption-xs text-[10px] text-outline-muted">Est. 20:00</span>
+</div>
+</div>
+<!-- Chef's note badge -->
+<div class="bg-surface-oat rounded-xl p-space-sm flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-secondary text-on-secondary flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">local_fire_department</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-text-pine">Chef Dumisani has fired your mains</span>
+<span class="font-caption-xs text-caption-xs text-text-olive truncate">Wood oven temperature calibrated at 450°C.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- QUICK SERVICE ASSISTANCE (Chips) -->
+<section class="px-margin mb-space-md">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm text-text-pine">Need anything at Table 7?</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Tap to request</span>
+</div>
+<div class="flex gap-space-xs overflow-x-auto pb-1 scrollbar-none">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-full bg-surface-porcelain text-text-pine shadow-sm active:scale-95 transition-all text-caption-xs font-label-sm flex-shrink-0" onclick="triggerServiceAlert('Fresh water requested')">
+<span class="material-symbols-outlined text-[16px] text-status-ordered">water_drop</span>
+        Ice Water
+      </button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-full bg-surface-porcelain text-text-pine shadow-sm active:scale-95 transition-all text-caption-xs font-label-sm flex-shrink-0" onclick="triggerServiceAlert('Extra cutlery requested')">
+<span class="material-symbols-outlined text-[16px] text-primary">flatware</span>
+        Extra Cutlery
+      </button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-full bg-surface-porcelain text-text-pine shadow-sm active:scale-95 transition-all text-caption-xs font-label-sm flex-shrink-0" onclick="triggerServiceAlert('Condiments requested')">
+<span class="material-symbols-outlined text-[16px] text-secondary">restaurant</span>
+        Salt &amp; Olive Oil
+      </button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-full bg-status-waiting-container text-on-surface shadow-sm active:scale-95 transition-all text-caption-xs font-label-sm flex-shrink-0" onclick="triggerServiceAlert('Waiter called to table')">
+<span class="material-symbols-outlined text-[16px] text-status-waiting">waving_hand</span>
+        Ask Question
+      </button>
+</div>
+</section>
+<!-- ORDER SEGMENT / CURRENT TAB SELECTOR -->
+<section class="px-margin mb-space-sm">
+<div class="bg-surface-stone p-1 rounded-xl flex items-center">
+<button class="flex-1 py-2 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-label-sm shadow-sm transition-all flex items-center justify-center gap-1.5" id="tab-active-btn" onclick="switchOrderTab('sent')">
+<span>Sent to Kitchen</span>
+<span class="px-1.5 py-0.2 rounded-full bg-status-ready-container text-status-ready text-[11px] font-bold">3</span>
+</button>
+<button class="flex-1 py-2 rounded-lg text-text-olive font-label-sm text-label-sm hover:text-text-pine transition-all flex items-center justify-center gap-1.5" id="tab-cart-btn" onclick="switchOrderTab('unsubmitted')">
+<span>New Additions</span>
+<span class="px-1.5 py-0.2 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold">1</span>
+</button>
+</div>
+</section>
+<!-- ITEMS CONTAINER (Sent Order vs Unsubmitted Cart) -->
+<section class="px-margin mb-space-md flex flex-col gap-space-sm">
+<!-- View A: Sent items -->
+<div class="flex flex-col gap-space-sm" id="sent-items-view">
+<!-- Item 1 -->
+<div class="bg-surface-porcelain rounded-xl p-space-sm shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Slow braised succulent Karoo lamb shank on creamy polenta with glossy rosemary demi-glace, served on a warm rustic ceramic plate in soft restaurant lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuUTV5999912A4WoR-4DaCxcN4lJqAGNTZ7ZPEuCEd2g293rHnaTszuyFPQPmDgY9os3394TI25q6HWg0UFXOjRbYUI7GY5ibqJSVi3kUTbBvYOzsbwiJy9Fp7yvXD0_JYVK3S0CD3-nD_CTZby34ymPfJFrizk7J-HQ9ahzn2fS9IWf4LtaKAkpJNOyIh6_ktJ3MPvUPicg5ldbd_d6a292wbosnkna9Ky6gQq8EY"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between">
+<h3 class="font-title-sm text-title-sm text-text-pine leading-tight">Braised Karoo Lamb Shank</h3>
+<span class="font-body-bold text-body-bold text-text-pine ml-2">R245</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container rounded font-caption-xs text-caption-xs font-semibold">1x Fired</span>
+<span class="text-caption-xs text-text-olive">Est. ready in 12m</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-oat rounded-lg px-2.5 py-1.5 flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">edit_note</span>
+<span class="font-caption-xs text-caption-xs text-text-pine">Note: "Extra rosemary jus on the side, please"</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-porcelain rounded-xl p-space-sm shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Neapolitan style margherita pizza with bubbly blistered woodfired crust, melted fior di latte mozzarella, rich san marzano tomato sauce, and vibrant fresh green basil leaves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN7sTwzp0Nw3p1C-yPjUJULe8I5A9RdDPmzn6cSSUlwlQyxZxfGxSOykX9qIMYj2HULQq5ReQXhXwBYjPjX13U_q4IgbnEeqvms3g1Vfca7CVi3Va-Scz4iBLv9z2MVCB3c_zv3kLFF0mfE3RFg0Cui_MbAx5gQSSaR6hcDUdZjgASWouMUlLBD7arjonnIfPAqGJuj1DfXWcfU0fIe3NNqacFi7yu-PpS-gM1CCiE"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between">
+<h3 class="font-title-sm text-title-sm text-text-pine leading-tight">Woodfired Margherita</h3>
+<span class="font-body-bold text-body-bold text-text-pine ml-2">R135</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container rounded font-caption-xs text-caption-xs font-semibold">1x In Oven</span>
+<span class="text-caption-xs text-text-olive">Est. ready in 6m</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-oat rounded-lg px-2.5 py-1.5 flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">edit_note</span>
+<span class="font-caption-xs text-caption-xs text-text-pine">Note: "Well done crust, extra fresh torn basil"</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-porcelain rounded-xl p-space-sm shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Artisanal chilled rooibos iced tea garnished with fresh dehydrated citrus wheel and thyme sprig in a tall faceted glass on warm linen tablecloth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBjOXixXitNgq3-tZBeQJFFbXTViNqzPM1IUOIWx4ndBSH1iJCJaa5sNPL0_rSC4aeF-FxejYUXAiYyl_4rwLoHvPjY9HIvHgqfSlJufdAWr8UfL8iEYQjG7EOW9CFDA6ffbKq9wkWrd1YMMVvn_ORorqvfUyQd6rZCCY34Ff1LJ6QbuQ7du4KpJ_1_Fg2ydu-BA0Aegz6K3M5w3U4G8jhe3kfF5jIxaCynAsafPm4"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between">
+<h3 class="font-title-sm text-title-sm text-text-pine leading-tight">Artisanal Rooibos &amp; Citrus Tea</h3>
+<span class="font-body-bold text-body-bold text-text-pine ml-2">R45</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-status-ready-container text-status-ready rounded font-caption-xs text-caption-xs font-semibold">1x Delivered</span>
+<span class="text-caption-xs text-text-olive">At table</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-oat rounded-lg px-2.5 py-1.5 flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[16px] text-text-olive">edit_note</span>
+<span class="font-caption-xs text-caption-xs text-text-pine">Note: "No ice, extra lemon slice"</span>
+</div>
+</div>
+</div>
+<!-- View B: Unsubmitted / Additions Cart -->
+<div class="hidden flex-col gap-space-sm" id="unsubmitted-items-view">
+<div class="bg-surface-porcelain rounded-xl p-space-sm shadow-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Traditional South African malva pudding soaked in warm apricot butter sauce with vanilla bean creme anglaise served in a stoneware dish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbXnYmCQYA0Zg5fFAZcOAKZ2jqZn7WSMiqeg9BNfh2rKoaRi7a5HjeTk0ptKVHaYhod2hdg1qPNaFzUvEhWwwea15rsJTP14Gd1T3u-Gy4G-xygfj77XlgUy0TdsqImII-68YqOJ4jZ8Qa9HDiTnyHH60dCYap-7ztKxBkRS88gAOFe029LfrmT7d2QAwbJOZTRn7C14GzfvZvthZBRZ42JUL7CF9nOtHEST-a2dSW"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-title-sm text-title-sm text-text-pine leading-tight">Warm Malva Pudding</h3>
+<span class="font-caption-xs text-caption-xs text-text-olive">Dessert • Unfired</span>
+</div>
+<span class="font-body-bold text-body-bold text-text-pine">R75</span>
+</div>
+<!-- Quantity controls -->
+<div class="flex items-center justify-between mt-3">
+<div class="flex items-center gap-2 bg-surface-stone px-2 py-1 rounded-full">
+<button class="w-6 h-6 rounded-full bg-surface-porcelain flex items-center justify-center text-text-pine shadow-xs active:scale-90" onclick="updateQty(-1)">
+<span class="material-symbols-outlined text-[14px]">remove</span>
+</button>
+<span class="font-label-sm text-label-sm text-text-pine px-1 font-bold" id="item-qty-val">1</span>
+<button class="w-6 h-6 rounded-full bg-surface-porcelain flex items-center justify-center text-text-pine shadow-xs active:scale-90" onclick="updateQty(1)">
+<span class="material-symbols-outlined text-[14px]">add</span>
+</button>
+</div>
+<button class="text-status-error font-caption-xs text-caption-xs flex items-center gap-0.5" onclick="removeItem()">
+<span class="material-symbols-outlined text-[14px]">delete</span>
+                Remove
+              </button>
+</div>
+</div>
+</div>
+<!-- Add note -->
+<div class="mt-3">
+<div class="flex items-center gap-2 bg-surface-stone/60 rounded-lg px-3 py-2">
+<span class="material-symbols-outlined text-[18px] text-text-olive">notes</span>
+<input class="w-full bg-transparent text-text-pine placeholder:text-outline-muted font-body-sm text-body-sm focus:outline-none" placeholder="Add special kitchen note for this item..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Button to Fire Addition -->
+<button class="w-full py-3.5 bg-secondary text-on-secondary rounded-xl font-title-sm text-title-sm shadow-md active:scale-[0.99] transition-transform flex items-center justify-center gap-2" onclick="submitNewItems()">
+<span class="material-symbols-outlined text-[20px]">local_fire_department</span>
+<span>Fire Additional Dish to Kitchen (+R75)</span>
+</button>
+</div>
+</section>
+<!-- BILL SUMMARY & TIP SELECTOR -->
+<section class="px-margin mb-space-md">
+<div class="bg-surface-porcelain rounded-2xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-title-sm text-title-sm text-text-pine">Table Bill Breakdown</span>
+<span class="font-caption-xs text-caption-xs text-status-ready bg-status-ready-container px-2 py-0.5 rounded-full font-semibold">Active Dine-in</span>
+</div>
+<!-- Line items -->
+<div class="flex flex-col gap-1.5 pb-3">
+<div class="flex justify-between font-body-sm text-body-sm text-text-olive">
+<span>Items Subtotal (3 items)</span>
+<span class="font-medium text-text-pine">R425.00</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-text-olive">
+<span class="flex items-center gap-1">VAT Included (15%) <span class="material-symbols-outlined text-[14px] text-outline">info</span></span>
+<span>R55.43</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-text-olive">
+<span>Staff Gratuity</span>
+<span class="font-medium text-text-pine" id="tip-amount-display">R63.75 (15%)</span>
+</div>
+</div>
+<!-- Tip Selector Pills -->
+<div class="bg-surface-oat p-space-sm rounded-xl mb-3">
+<span class="font-caption-xs text-caption-xs text-text-olive block mb-2 font-medium">Add waitstaff tip for Sipho:</span>
+<div class="grid grid-cols-4 gap-2">
+<button class="tip-btn py-2 px-1 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-caption-xs shadow-xs text-center transition-all" onclick="selectTip(0.10, 'R42.50 (10%)', this)">
+            10%<br/><span class="text-[10px] text-text-olive">R42.50</span>
+</button>
+<button class="tip-btn py-2 px-1 rounded-lg bg-primary text-on-primary font-label-sm text-caption-xs shadow-xs text-center transition-all" onclick="selectTip(0.15, 'R63.75 (15%)', this)">
+            15%<br/><span class="text-[10px] opacity-80">R63.75</span>
+</button>
+<button class="tip-btn py-2 px-1 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-caption-xs shadow-xs text-center transition-all" onclick="selectTip(0.20, 'R85.00 (20%)', this)">
+            20%<br/><span class="text-[10px] text-text-olive">R85.00</span>
+</button>
+<button class="tip-btn py-2 px-1 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-caption-xs shadow-xs text-center transition-all flex flex-col items-center justify-center" onclick="selectCustomTip(this)">
+<span>Custom</span>
+<span class="material-symbols-outlined text-[14px] text-text-olive">tune</span>
+</button>
+</div>
+</div>
+<!-- Grand Total -->
+<div class="flex items-baseline justify-between pt-2">
+<div>
+<span class="font-caption-xs text-caption-xs text-text-olive block">Total to Settle</span>
+<span class="font-headline-md text-headline-md text-text-pine font-bold" id="grand-total-display">R488.75</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-outline-muted">Table 7 • Split friendly</span>
+</div>
+</div>
+</section>
+<!-- PERSISTENT TABLE ACTIONS (Call Waiter & Request Bill) -->
+<section class="px-margin mb-space-sm">
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Call Waiter Button -->
+<button class="w-full h-14 bg-surface-porcelain text-text-pine rounded-2xl shadow-sm active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 px-3" onclick="triggerServiceModal('waiter')">
+<div class="w-8 h-8 rounded-full bg-status-waiting-container text-status-waiting flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm leading-tight">Call Waiter</span>
+<span class="font-caption-xs text-[10px] text-text-olive">Sipho on duty</span>
+</div>
+</button>
+<!-- Request Bill Button -->
+<button class="w-full h-14 bg-secondary text-on-secondary rounded-2xl shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 px-3" onclick="triggerServiceModal('bill')">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm leading-tight">Request Bill</span>
+<span class="font-caption-xs text-[10px] text-surface-oat opacity-90">Pay at table</span>
+</div>
+</button>
+</div>
+</section>
+<!-- MODAL: Confirmation / Action Dialog -->
+<div class="fixed inset-0 bg-primary/40 backdrop-blur-xs z-50 hidden items-end justify-center p-4" id="service-modal">
+<div class="bg-surface-porcelain w-full max-w-sm rounded-2xl p-space-md shadow-2xl flex flex-col gap-space-sm transform transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-status-bill-requested-container text-status-bill-requested flex items-center justify-center" id="modal-icon-bg">
+<span class="material-symbols-outlined text-[18px]" id="modal-icon">payments</span>
+</div>
+<h4 class="font-title-sm text-title-sm text-text-pine" id="modal-title">Request Final Bill</h4>
+</div>
+<button class="w-7 h-7 rounded-full bg-surface-stone flex items-center justify-center text-text-olive" onclick="closeModal()">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-text-olive" id="modal-desc">
+        How would you like to settle Table 7's bill for <strong>R488.75</strong>?
+      </p>
+<div class="flex flex-col gap-2 pt-1" id="modal-options">
+<button class="w-full py-3 px-4 rounded-xl bg-surface-oat hover:bg-surface-stone text-text-pine font-label-sm text-label-sm flex items-center justify-between" onclick="confirmBill('Card Machine')">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">credit_card</span>
+            Bring Card Machine
+          </span>
+<span class="material-symbols-outlined text-[18px] text-outline">chevron_right</span>
+</button>
+<button class="w-full py-3 px-4 rounded-xl bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-between shadow-sm" onclick="confirmBill('Instant Mobile Pay')">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">phone_iphone</span>
+            Pay on Phone (Apple / Google Pay)
+          </span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<button class="w-full py-2.5 px-4 rounded-xl text-text-olive font-caption-xs text-caption-xs text-center hover:bg-surface-stone" onclick="confirmBill('Cash')">
+          Paying with Cash
+        </button>
+</div>
+</div>
+</div>
+<script>
+    let currentTipRate = 0.15;
+    const baseSubtotal = 425.00;
+
+    function triggerServiceAlert(msg) {
+      const toast = document.getElementById('service-toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.innerText = msg;
+      toast.classList.remove('-translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      
+      setTimeout(() => {
+        dismissToast();
+      }, 3500);
+    }
+
+    function dismissToast() {
+      const toast = document.getElementById('service-toast');
+      toast.classList.add('-translate-y-24', 'opacity-0');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }
+
+    function switchOrderTab(tab) {
+      const sentBtn = document.getElementById('tab-active-btn');
+      const cartBtn = document.getElementById('tab-cart-btn');
+      const sentView = document.getElementById('sent-items-view');
+      const cartView = document.getElementById('unsubmitted-items-view');
+
+      if (tab === 'sent') {
+        sentBtn.className = "flex-1 py-2 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-label-sm shadow-sm transition-all flex items-center justify-center gap-1.5";
+        cartBtn.className = "flex-1 py-2 rounded-lg text-text-olive font-label-sm text-label-sm hover:text-text-pine transition-all flex items-center justify-center gap-1.5";
+        sentView.classList.remove('hidden');
+        cartView.classList.add('hidden');
+      } else {
+        cartBtn.className = "flex-1 py-2 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-label-sm shadow-sm transition-all flex items-center justify-center gap-1.5";
+        sentBtn.className = "flex-1 py-2 rounded-lg text-text-olive font-label-sm text-label-sm hover:text-text-pine transition-all flex items-center justify-center gap-1.5";
+        cartView.classList.remove('hidden');
+        cartView.classList.add('flex');
+        sentView.classList.add('hidden');
+      }
+    }
+
+    function selectTip(rate, label, btn) {
+      currentTipRate = rate;
+      document.querySelectorAll('.tip-btn').forEach(b => {
+        b.className = "tip-btn py-2 px-1 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-caption-xs shadow-xs text-center transition-all";
+      });
+      btn.className = "tip-btn py-2 px-1 rounded-lg bg-primary text-on-primary font-label-sm text-caption-xs shadow-xs text-center transition-all";
+      
+      const tipVal = baseSubtotal * rate;
+      document.getElementById('tip-amount-display').innerText = `R${tipVal.toFixed(2)} (${rate * 100}%)`;
+      const grandTotal = baseSubtotal + tipVal;
+      document.getElementById('grand-total-display').innerText = `R${grandTotal.toFixed(2)}`;
+    }
+
+    function selectCustomTip(btn) {
+      const customAmount = prompt("Enter custom staff tip amount in Rand (R):", "50");
+      if (customAmount !== null && !isNaN(customAmount) && customAmount.trim() !== '') {
+        const tipVal = parseFloat(customAmount);
+        document.querySelectorAll('.tip-btn').forEach(b => {
+          b.className = "tip-btn py-2 px-1 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-caption-xs shadow-xs text-center transition-all";
+        });
+        btn.className = "tip-btn py-2 px-1 rounded-lg bg-primary text-on-primary font-label-sm text-caption-xs shadow-xs text-center transition-all";
+        document.getElementById('tip-amount-display').innerText = `R${tipVal.toFixed(2)} (Custom)`;
+        const grandTotal = baseSubtotal + tipVal;
+        document.getElementById('grand-total-display').innerText = `R${grandTotal.toFixed(2)}`;
+      }
+    }
+
+    function updateQty(delta) {
+      const qtyEl = document.getElementById('item-qty-val');
+      let val = parseInt(qtyEl.innerText) + delta;
+      if (val < 1) val = 1;
+      qtyEl.innerText = val;
+    }
+
+    function removeItem() {
+      const cartView = document.getElementById('unsubmitted-items-view');
+      cartView.innerHTML = `
+        <div class="bg-surface-porcelain rounded-xl p-6 text-center shadow-sm">
+          <span class="material-symbols-outlined text-[36px] text-outline-muted mb-2">shopping_bag</span>
+          <p class="font-title-sm text-title-sm text-text-pine">Your unsubmitted tray is empty</p>
+          <p class="font-body-sm text-body-sm text-text-olive mt-1">Browse our menu to order desserts or more drinks.</p>
+        </div>
+      `;
+      document.getElementById('tab-cart-btn').querySelector('span:last-child').innerText = '0';
+    }
+
+    function submitNewItems() {
+      triggerServiceAlert('Fired Warm Malva Pudding to the kitchen!');
+      switchOrderTab('sent');
+      document.getElementById('tab-cart-btn').querySelector('span:last-child').innerText = '0';
+      document.getElementById('tab-active-btn').querySelector('span:last-child').innerText = '4';
+    }
+
+    function triggerServiceModal(type) {
+      const modal = document.getElementById('service-modal');
+      const title = document.getElementById('modal-title');
+      const desc = document.getElementById('modal-desc');
+      const icon = document.getElementById('modal-icon');
+      const iconBg = document.getElementById('modal-icon-bg');
+
+      if (type === 'waiter') {
+        title.innerText = 'Call Server to Table 7';
+        desc.innerText = 'Waitstaff Sipho will be notified immediately. Need anything specific?';
+        icon.innerText = 'notifications';
+        iconBg.className = 'w-8 h-8 rounded-full bg-status-waiting-container text-status-waiting flex items-center justify-center';
+        document.getElementById('modal-options').innerHTML = `
+          <button onclick="confirmWaiter('General Table Assistance')" class="w-full py-3 px-4 rounded-xl bg-surface-oat hover:bg-surface-stone text-text-pine font-label-sm text-label-sm text-left">
+            👋 General Table Assistance
+          </button>
+          <button onclick="confirmWaiter('Menu Recommendations')" class="w-full py-3 px-4 rounded-xl bg-surface-oat hover:bg-surface-stone text-text-pine font-label-sm text-label-sm text-left">
+            🍷 Wine Pairing or Dessert Suggestion
+          </button>
+          <button onclick="confirmWaiter('Urgent Service')" class="w-full py-3 px-4 rounded-xl bg-secondary text-on-secondary font-label-sm text-label-sm text-center shadow-sm">
+            Call Sipho Right Now
+          </button>
+        `;
+      } else {
+        title.innerText = 'Request Final Bill';
+        desc.innerText = 'How would you like to settle Table 7\'s bill for R488.75?';
+        icon.innerText = 'payments';
+        iconBg.className = 'w-8 h-8 rounded-full bg-status-bill-requested-container text-status-bill-requested flex items-center justify-center';
+        document.getElementById('modal-options').innerHTML = `
+          <button onclick="confirmBill('Card Machine')" class="w-full py-3 px-4 rounded-xl bg-surface-oat hover:bg-surface-stone text-text-pine font-label-sm text-label-sm flex items-center justify-between">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[20px] text-primary">credit_card</span>
+              Bring Card Machine
+            </span>
+            <span class="material-symbols-outlined text-[18px] text-outline">chevron_right</span>
+          </button>
+          <button onclick="confirmBill('Instant Mobile Pay')" class="w-full py-3 px-4 rounded-xl bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-between shadow-sm">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[20px]">phone_iphone</span>
+              Pay on Phone (Apple / Google Pay)
+            </span>
+            <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+          </button>
+          <button onclick="confirmBill('Cash')" class="w-full py-2.5 px-4 rounded-xl text-text-olive font-caption-xs text-caption-xs text-center hover:bg-surface-stone">
+            Paying with Cash
+          </button>
+        `;
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('service-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function confirmWaiter(reason) {
+      closeModal();
+      triggerServiceAlert(`Waiter Sipho notified: ${reason}`);
+    }
+
+    function confirmBill(method) {
+      closeModal();
+      triggerServiceAlert(`Bill requested via ${method}. Server coming over.`);
+    }
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(28,36,29,0.05)]" data-active-classes="text-primary font-body-bold"><div class="flex items-center justify-around h-16 px-space-sm"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-text-olive hover:text-on-surface transition-colors" data-path="menu" href="#"><span class="material-symbols-outlined text-[24px]">restaurant_menu</span><span class="font-caption-xs text-caption-xs">Menu</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-text-olive hover:text-on-surface transition-colors" data-path="order-status" href="#"><span class="material-symbols-outlined text-[24px]">receipt_long</span><span class="font-caption-xs text-caption-xs">Orders</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-text-olive hover:text-on-surface transition-colors" data-path="service-bell" href="#"><span class="material-symbols-outlined text-[24px]">room_service</span><span class="font-caption-xs text-caption-xs">Service</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-text-olive hover:text-on-surface transition-colors" data-path="bill" href="#"><span class="material-symbols-outlined text-[24px]">payments</span><span class="font-caption-xs text-caption-xs">Bill</span></a></div></nav></body></html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline-variant":"#c2c8be","secondary-fixed-dim":"#ffb59c","primary":"#07290c","outline-border":"#D8D4C8","text-pine":"#1C241D","on-primary-fixed":"#012106","inverse-primary":"#aad1a6","on-error-container":"#93000a","tertiary-fixed-dim":"#ffb59c","surface-dim":"#dbdad6","tertiary":"#441100","status-empty":"#E7E3D9","on-error":"#ffffff","status-waiting":"#C9821E","status-error":"#B9382C","inverse-surface":"#30312e","surface-oat":"#F5F2EB","surface-bright":"#fbf9f5","on-status-empty":"#525E53","status-waiting-container":"#FCF0D8","outline":"#737970","outline-muted":"#859086","surface-container-high":"#eae8e4","on-tertiary":"#ffffff","status-bill-requested-container":"#FCE6DD","on-primary":"#ffffff","surface-porcelain":"#FFFFFF","on-tertiary-fixed-variant":"#802a05","status-error-container":"#FDE4E1","surface-container":"#efeeea","on-secondary-fixed":"#390c00","on-surface-variant":"#424840","on-tertiary-container":"#f58157","primary-fixed-dim":"#aad1a6","primary-container":"#DCE8DD","on-background":"#1b1c1a","surface-container-highest":"#e4e2de","status-ordered":"#2C6B7E","surface-tint":"#446744","on-primary-container":"#86ab83","surface-stone":"#EFECE4","on-secondary":"#ffffff","on-secondary-fixed-variant":"#822801","status-ordered-container":"#E0F0F4","status-ready":"#2E6F40","status-bill-requested":"#C85A32","surface-container-low":"#f5f3ef","status-ready-container":"#DFF0E3","primary-fixed":"#c5edc1","error":"#ba1a1a","secondary-container":"#FCE6DD","secondary-fixed":"#ffdbcf","tertiary-container":"#691e00","on-surface":"#1b1c1a","error-container":"#ffdad6","text-olive":"#525E53","on-secondary-container":"#7A2E14","surface-variant":"#e4e2de","inverse-on-surface":"#f2f0ed","tertiary-fixed":"#ffdbcf","on-tertiary-fixed":"#390c00","surface":"#fbf9f5","secondary":"#a23e18","background":"#fbf9f5","surface-container-lowest":"#ffffff","on-primary-fixed-variant":"#2d4e2e"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-lg":"1.5rem","margin-desktop":"2rem","gutter-desktop":"1.5rem","space-sm":"0.5rem","space-2xl":"3rem",margin:"1rem","space-md":"1rem",gutter:"1rem","gutter-tablet":"1.25rem","space-xs":"0.25rem","space-xl":"2rem","margin-tablet":"1.5rem"},fontFamily:{"label-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-base":["Inter"],"title-sm":["Plus Jakarta Sans"],"caption-xs":["Inter"],"display-lg":["Plus Jakarta Sans"],"body-sm":["Inter"],"body-bold":["Inter"],"metric-lg":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"]},fontSize:{"label-sm":["13px",{lineHeight:"18px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-md":["22px",{lineHeight:"28px",letterSpacing:"-0.015em",fontWeight:"700"}],"body-base":["16px",{lineHeight:"24px",letterSpacing:"0",fontWeight:"400"}],"title-sm":["18px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"600"}],"caption-xs":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"500"}],"display-lg":["32px",{lineHeight:"38px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-sm":["14px",{lineHeight:"20px",letterSpacing:"0",fontWeight:"400"}],"body-bold":["16px",{lineHeight:"24px",letterSpacing:"0",fontWeight:"600"}],"metric-lg":["28px",{lineHeight:"34px",letterSpacing:"-0.02em",fontWeight:"700"}],"display-lg-mobile":["26px",{lineHeight:"32px",letterSpacing:"-0.02em",fontWeight:"700"}]}}}};</script></head><body class="bg-surface font-body-base text-body-base text-on-surface antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-oat z-50 flex flex-col justify-between py-6 px-4 shadow-[0_1px_8px_rgba(28,36,29,0.04)]"><div class="flex flex-col gap-6"><div class="flex items-center gap-3 px-3"><div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[22px]">restaurant</span></div><div class="flex flex-col"><span class="font-title-sm text-title-sm text-text-pine tracking-tight leading-none">Tafole</span><span class="font-caption-xs text-caption-xs text-text-olive uppercase tracking-wider mt-1">Back Office OS</span></div></div><nav class="flex flex-col gap-1.5" data-active-classes="bg-primary-container text-on-surface font-semibold rounded-xl"><a class="flex items-center gap-3 px-3.5 py-3 rounded-xl font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Dashboard</span></a><a aria-current="page" class="flex items-center gap-3 px-3.5 py-3 transition-all bg-primary-container text-on-surface font-semibold rounded-xl" data-path="menu-editor" href="#"><span class="material-symbols-outlined text-[20px]">menu_book</span><span>Menu Editor</span></a><a class="flex items-center gap-3 px-3.5 py-3 rounded-xl font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="tables-qr" href="#"><span class="material-symbols-outlined text-[20px]">table_restaurant</span><span>Tables &amp; QR</span></a><a class="flex items-center gap-3 px-3.5 py-3 rounded-xl font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="orders-history" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span>Orders &amp; History</span></a><a class="flex items-center gap-3 px-3.5 py-3 rounded-xl font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="staff" href="#"><span class="material-symbols-outlined text-[20px]">badge</span><span>Staff</span></a><a class="flex items-center gap-3 px-3.5 py-3 rounded-xl font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a></nav></div><div class="flex flex-col gap-3 px-2"><div class="bg-surface-stone p-3 rounded-xl flex items-center justify-between"><div class="flex flex-col"><span class="font-caption-xs text-caption-xs text-text-olive">KDS Status</span><span class="font-label-sm text-label-sm text-text-pine flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-status-ready inline-block"></span>Operational</span></div><button class="text-secondary hover:text-on-secondary-container transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">sync</span></button></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/90 backdrop-blur-xl z-40 px-gutter-desktop shadow-[0_1px_8px_rgba(28,36,29,0.04)] flex items-center justify-between"><div class="flex items-center gap-4"><div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-oat text-text-pine"><span class="material-symbols-outlined text-secondary text-[18px]">storefront</span><span class="font-label-sm text-label-sm">Tafole Hearth &amp; Kitchen - Cape Town Central</span><span class="material-symbols-outlined text-outline text-[16px]">expand_more</span></div><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span><input class="w-72 pl-9 pr-4 py-1.5 bg-surface-porcelain rounded-lg text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary-container shadow-[0_1px_4px_rgba(28,36,29,0.02)]" placeholder="Search dishes, tickets, tables..." type="text"/></div></div><div class="flex items-center gap-4"><div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-status-ready-container text-status-ready"><span class="w-2 h-2 rounded-full bg-status-ready animate-pulse"></span><span class="font-caption-xs text-caption-xs font-semibold">Live Kitchen Connected</span></div><div class="h-6 w-px bg-outline-border"></div><div class="flex items-center gap-3 pl-1"><div class="flex flex-col text-right"><span class="font-label-sm text-label-sm text-text-pine leading-none">Chef Dumisani</span><span class="font-caption-xs text-caption-xs text-text-olive mt-0.5">Manager</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Command Context Bar -->
+<div class="w-full bg-surface-oat px-gutter-desktop py-4 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-text-pine tracking-tight">Menu Catalog &amp; Master Pricing</span>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container text-primary font-caption-xs text-caption-xs">Live Menu • Autumn 2025</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-olive">28 total items configured • Dual-channel sync with Diners QR &amp; Point of Sale</span>
+</div>
+</div>
+<!-- Header Quick Insights -->
+<div class="flex items-center gap-3">
+<div class="hidden lg:flex items-center gap-6 px-4 py-2 bg-surface-porcelain rounded-xl shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">percent</span>
+<div class="flex flex-col">
+<span class="font-caption-xs text-caption-xs text-text-olive uppercase tracking-wider">Avg Margin</span>
+<span class="font-label-sm text-label-sm text-text-pine">71.4%</span>
+</div>
+</div>
+<div class="w-px h-6 bg-surface-stone"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-status-waiting text-[20px]">inventory_2</span>
+<div class="flex flex-col">
+<span class="font-caption-xs text-caption-xs text-text-olive uppercase tracking-wider">86'd Items</span>
+<span class="font-label-sm text-label-sm text-text-pine">2 dishes</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-11 px-4 rounded-xl bg-surface-porcelain text-text-pine font-label-sm text-label-sm hover:bg-surface-stone transition-all flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Bulk Actions</span>
+<span class="material-symbols-outlined text-[16px] text-outline">expand_more</span>
+</button>
+<button class="h-11 px-5 rounded-xl bg-primary text-on-primary font-label-sm text-label-sm hover:opacity-95 transition-all flex items-center gap-2 shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Add New Dish</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Workspace Container: Subnav + Central Table + Slide-out Edit Drawer -->
+<div class="w-full px-gutter-desktop py-6 flex flex-col xl:flex-row gap-6 items-start">
+<!-- 1. LEFT SUB-NAV / CATEGORIES WORKSPACE (Width constrained) -->
+<div class="w-full xl:w-64 shrink-0 flex flex-col gap-6">
+<!-- Categories Card -->
+<div class="bg-surface-porcelain rounded-xl p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between px-1">
+<span class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Menu Categories</span>
+<button class="text-text-olive hover:text-primary transition-colors text-[18px]" type="button">
+<span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<button class="w-full px-3 py-2.5 rounded-lg flex items-center justify-between text-left transition-all hover:bg-surface-oat text-text-pine" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-outline text-[18px]">apps</span>
+<span class="font-body-sm text-body-sm">All Items</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-stone font-caption-xs text-caption-xs text-text-olive">28</span>
+</button>
+<button class="w-full px-3 py-2.5 rounded-lg flex items-center justify-between text-left transition-all hover:bg-surface-oat text-text-pine" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-outline text-[18px]">tapas</span>
+<span class="font-body-sm text-body-sm">Starters &amp; Plates</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-stone font-caption-xs text-caption-xs text-text-olive">6</span>
+</button>
+<!-- Active Category: Mains & Grills -->
+<button class="w-full px-3 py-2.5 rounded-lg flex items-center justify-between text-left transition-all bg-primary-container text-text-pine font-semibold shadow-xs" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">skillet</span>
+<span class="font-body-sm text-body-sm">Mains &amp; Grills</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-porcelain font-caption-xs text-caption-xs text-primary font-bold">8</span>
+</button>
+<button class="w-full px-3 py-2.5 rounded-lg flex items-center justify-between text-left transition-all hover:bg-surface-oat text-text-pine" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-outline text-[18px]">local_pizza</span>
+<span class="font-body-sm text-body-sm">Woodfired Pizza</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-stone font-caption-xs text-caption-xs text-text-olive">5</span>
+</button>
+<button class="w-full px-3 py-2.5 rounded-lg flex items-center justify-between text-left transition-all hover:bg-surface-oat text-text-pine" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-outline text-[18px]">nutrition</span>
+<span class="font-body-sm text-body-sm">Sides &amp; Greens</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-stone font-caption-xs text-caption-xs text-text-olive">4</span>
+</button>
+<button class="w-full px-3 py-2.5 rounded-lg flex items-center justify-between text-left transition-all hover:bg-surface-oat text-text-pine" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-outline text-[18px]">local_bar</span>
+<span class="font-body-sm text-body-sm">Beverages &amp; Cellar</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-stone font-caption-xs text-caption-xs text-text-olive">5</span>
+</button>
+</div>
+<button class="w-full mt-2 py-2 px-3 rounded-lg bg-surface-stone hover:bg-surface-container-high transition-colors text-text-pine font-label-sm text-label-sm flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Add Category</span>
+</button>
+</div>
+<!-- Quick Operational Filters -->
+<div class="bg-surface-porcelain rounded-xl p-4 shadow-sm flex flex-col gap-3">
+<span class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold px-1">Inventory Filters</span>
+<div class="flex flex-col gap-1.5">
+<label class="flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-surface-oat cursor-pointer">
+<div class="flex items-center gap-2.5">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-text-pine">Active on QR Menu</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-text-olive">26</span>
+</label>
+<label class="flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-surface-oat cursor-pointer">
+<div class="flex items-center gap-2.5">
+<input class="w-4 h-4 rounded text-secondary accent-secondary cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-secondary font-medium">86'd / Sold Out</span>
+</div>
+<span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-container font-caption-xs text-caption-xs font-bold">2</span>
+</label>
+<label class="flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-surface-oat cursor-pointer">
+<div class="flex items-center gap-2.5">
+<input class="w-4 h-4 rounded text-status-waiting accent-status-waiting cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-text-pine">Low Stock Alert</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-text-olive">3</span>
+</label>
+<label class="flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-surface-oat cursor-pointer">
+<div class="flex items-center gap-2.5">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-text-pine">Seasonal Special</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-text-olive">4</span>
+</label>
+</div>
+</div>
+<!-- Quick Margin Indicator SVG Card -->
+<div class="bg-primary text-on-primary rounded-xl p-4 shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-caption-xs text-caption-xs text-inverse-primary uppercase tracking-wider">Kitchen Health</span>
+<span class="material-symbols-outlined text-[16px] text-primary-fixed-dim">verified</span>
+</div>
+<span class="font-label-sm text-label-sm">High-Margin Dishes Highlighted</span>
+<p class="font-caption-xs text-caption-xs text-surface-container-high leading-relaxed">
+          6 dishes yield &gt;74% gross margin. Recommend promoting Karoo Lamb and Woodfired pizzas in dynamic QR highlights.
+        </p>
+<div class="w-full bg-surface-container-highest/20 h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-primary-fixed-dim h-full rounded-full" style="width: 78%;"></div>
+</div>
+</div>
+</div>
+<!-- 2. CENTRAL MENU DATA TABLE (Main Fluid Workspace) -->
+<div class="flex-1 min-w-0 flex flex-col gap-4">
+<!-- Search & Quick Action Toolbar -->
+<div class="bg-surface-porcelain p-3.5 rounded-xl shadow-sm flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full pl-9 pr-4 py-2 bg-surface-oat rounded-lg text-text-pine placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-porcelain focus:ring-2 focus:ring-primary-container" placeholder="Search dishes, ingredients, SKU, stations..." type="text" value="Mains"/>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<span class="font-caption-xs text-caption-xs text-text-olive">Showing 8 of 8 Mains</span>
+<div class="h-4 w-px bg-surface-stone mx-1"></div>
+<button class="p-2 rounded-lg bg-surface-oat hover:bg-surface-stone text-text-pine transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">view_column</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-oat hover:bg-surface-stone text-text-pine transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+</button>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-surface-porcelain rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-oat text-text-olive font-caption-xs text-caption-xs uppercase tracking-wider">
+<th class="py-3.5 pl-4 pr-2 w-10">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</th>
+<th class="py-3.5 px-3">Dish / Specifications</th>
+<th class="py-3.5 px-3">Category</th>
+<th class="py-3.5 px-3">Price (ZAR)</th>
+<th class="py-3.5 px-3">Cost &amp; Margin</th>
+<th class="py-3.5 px-3">Station</th>
+<th class="py-3.5 px-3">Availability</th>
+<th class="py-3.5 pr-4 pl-2 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-stone">
+<!-- Row 1: Braised Karoo Lamb Shank (SELECTED ROW) -->
+<tr class="bg-primary-container/25 hover:bg-primary-container/35 transition-colors cursor-pointer group">
+<td class="py-4 pl-4 pr-2 align-middle">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover shadow-xs shrink-0" data-alt="Gourmet slow braised Karoo lamb shank served with glossy rosemary jus over creamy white polenta in an earthy ceramic bowl with dark rustic ambiance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGTa4ZZioxbq1RtiVD2dDNQWFrNYY43FUiNLFfvMFWu_litQgVV3LMR_mdMBgvHza6-qqg8CcWjuW0MXV9FYOgKIaqDJc1lZnH41v2ZVLgzQezsxo_puFdgjJPpUKnmkVslSJ0SdH8D6pRGTInUAyvigfW1YOpz_RbAyPuIyh7xpoHflWw79EAi8PQBD7n6IoCzt8F9FGAFs859uVmpjJ9WWi53bk6jcmP12QRf2Ml"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-body-bold text-body-bold text-text-pine truncate">Braised Karoo Lamb Shank</span>
+<span class="px-2 py-0.5 rounded bg-secondary text-on-secondary font-caption-xs text-caption-xs">Chef's Special</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-text-olive truncate">Slow-cooked 7h, rosemary jus, creamy heirloom polenta</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2.5 py-1 rounded-md bg-surface-oat text-text-pine font-caption-xs text-caption-xs font-semibold whitespace-nowrap">Mains &amp; Grills</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-text-pine font-bold">R 245.00</span>
+<button class="text-outline hover:text-text-pine opacity-0 group-hover:opacity-100 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-3 align-middle whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-caption-xs text-caption-xs text-text-pine font-medium">R 68.50 cost</span>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">72.0% Margin</span>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2 py-1 rounded bg-surface-stone text-text-pine font-caption-xs text-caption-xs whitespace-nowrap">Wood Oven</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-2">
+<!-- Custom styled available toggle -->
+<button class="w-10 h-5 rounded-full bg-status-ready relative p-0.5 transition-colors" type="button">
+<div class="w-4 h-4 rounded-full bg-surface-porcelain translate-x-5 transition-transform shadow-xs"></div>
+</button>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">In Stock</span>
+</div>
+</td>
+<td class="py-4 pr-4 pl-2 align-middle text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg bg-primary text-on-primary hover:opacity-90 shadow-xs" title="Editing currently" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Flame-Grilled Ribeye 300g -->
+<tr class="hover:bg-surface-oat/50 transition-colors cursor-pointer group">
+<td class="py-4 pl-4 pr-2 align-middle">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover shadow-xs shrink-0" data-alt="Prime dry-aged beef ribeye steak charred on wood embers with smoked bone marrow butter and sea salt flakes on black slate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk0l8M8EtIcHEUKVc4VpUPQP6vAsVpa7srXnqB7a0ayJuS8j1goLO_6YPQg3Ex0daUo-MrxbsD4MciPNb8bl9iZyeVGL0GpQ5PPlonFZj-8PkNd-u5YqG738cHU83LDEcOM1Kz4-syXQVk9FYWufkW4ylkNXgrhNPXZNGfbVdW7zYR-04bOZYZjHxdYyKK8tz-sk81twJifzbbCNcg--DTTx1iiL2aCgDGJsIlkZcM"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-body-bold text-body-bold text-text-pine truncate">Flame-Grilled Ribeye 300g</span>
+<span class="px-2 py-0.5 rounded bg-status-ready-container text-status-ready font-caption-xs text-caption-xs">Gluten-Free</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-text-olive truncate">Grass-fed beef, smoked bone marrow butter, chimichurri</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2.5 py-1 rounded-md bg-surface-oat text-text-pine font-caption-xs text-caption-xs font-semibold whitespace-nowrap">Mains &amp; Grills</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-text-pine font-bold">R 290.00</span>
+<button class="text-outline hover:text-text-pine opacity-0 group-hover:opacity-100 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-3 align-middle whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-caption-xs text-caption-xs text-text-pine font-medium">R 92.00 cost</span>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">68.3% Margin</span>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2 py-1 rounded bg-surface-stone text-text-pine font-caption-xs text-caption-xs whitespace-nowrap">Charcoal Grill</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-2">
+<button class="w-10 h-5 rounded-full bg-status-ready relative p-0.5 transition-colors" type="button">
+<div class="w-4 h-4 rounded-full bg-surface-porcelain translate-x-5 transition-transform shadow-xs"></div>
+</button>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">In Stock</span>
+</div>
+</td>
+<td class="py-4 pr-4 pl-2 align-middle text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Pan-Seared King Oyster Mushrooms (SOLD OUT ROW) -->
+<tr class="bg-surface-container-low/60 hover:bg-surface-oat/50 transition-colors cursor-pointer group opacity-90">
+<td class="py-4 pl-4 pr-2 align-middle">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-3">
+<div class="relative shrink-0">
+<img class="w-12 h-12 rounded-lg object-cover shadow-xs filter grayscale-[40%]" data-alt="Pan seared thick slices of king oyster mushrooms with garlic herb puree, microgreens, and toasted pine nuts in warm rustic ceramic plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDca17mAxDpO7wz9tJcJFk6Df-lRypo-04EQVx3M1LvXYQWucMHd_-CY6yPmUJ1YyqpbuDvcIhDe2zV9AzPiC3hmXfV7c969PXeBMAQBYdvC9rjs1hVdhbv3-nBtpzTx8eYwU1dAx1YKuIo6ZU-cqcr0WB8xohsXrNrzDUCBTOHnzZRxlQvA3NPheuB19fHPcEm8gb2YGd49je5dXzWoceCm8t9FyACLazEBAfasSiA"/>
+<span class="absolute -top-1 -right-1 px-1 py-0.2 bg-secondary text-on-secondary rounded text-[9px] font-bold">86'D</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-body-bold text-body-bold text-text-pine line-through opacity-80 truncate">Pan-Seared King Oyster</span>
+<span class="px-2 py-0.5 rounded bg-surface-stone text-text-olive font-caption-xs text-caption-xs">Vegan</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-secondary font-medium truncate">Sold out until tomorrow morning delivery</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2.5 py-1 rounded-md bg-surface-oat text-text-pine font-caption-xs text-caption-xs font-semibold whitespace-nowrap">Mains &amp; Grills</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-text-pine font-bold">R 175.00</span>
+<button class="text-outline hover:text-text-pine opacity-0 group-hover:opacity-100 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-3 align-middle whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-caption-xs text-caption-xs text-text-pine font-medium">R 38.00 cost</span>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">78.3% Margin</span>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2 py-1 rounded bg-surface-stone text-text-pine font-caption-xs text-caption-xs whitespace-nowrap">Sauté Pass</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-2">
+<!-- Toggle in SOLD OUT state -->
+<button class="w-10 h-5 rounded-full bg-outline-border relative p-0.5 transition-colors" type="button">
+<div class="w-4 h-4 rounded-full bg-surface-porcelain translate-x-0 transition-transform shadow-xs"></div>
+</button>
+<span class="font-caption-xs text-caption-xs text-secondary font-bold">86'd (Sold Out)</span>
+</div>
+</td>
+<td class="py-4 pr-4 pl-2 align-middle text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Woodfired Margherita D.O.C -->
+<tr class="hover:bg-surface-oat/50 transition-colors cursor-pointer group">
+<td class="py-4 pl-4 pr-2 align-middle">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover shadow-xs shrink-0" data-alt="Artisanal Neapolitan style woodfired margherita pizza with charred crust bubbles, fresh fior di latte mozzarella, and fresh basil leaves on wooden peel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXpja2WsliQhPGjZbNUTDRtRPKh6INFz8FUeqa7lZDDK4HlPml7InmoJtBVVZ4iERpNMQg_0vUktAZoyTTLR3DkMzGBuWX6RVBhIJYQF8v4rvYnEvuiiFoFMZygU_gsCaJfgYDogygpwqrPnUriqdDWGcU7zOTG5lWmBtzgfYXKbREjdIgxpHSn0MmccLZP4AZ2luqeED2Do5YpffBa08SqgB7XqX5gvM3nvYhe87Q"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-body-bold text-body-bold text-text-pine truncate">Woodfired Margherita</span>
+<span class="px-2 py-0.5 rounded bg-surface-stone text-text-pine font-caption-xs text-caption-xs">Signature</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-text-olive truncate">San Marzano tomatoes, buffalo mozzarella, wild basil</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2.5 py-1 rounded-md bg-surface-oat text-text-pine font-caption-xs text-caption-xs font-semibold whitespace-nowrap">Woodfired Pizza</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-text-pine font-bold">R 135.00</span>
+<button class="text-outline hover:text-text-pine opacity-0 group-hover:opacity-100 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-3 align-middle whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-caption-xs text-caption-xs text-text-pine font-medium">R 28.00 cost</span>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">79.2% Margin</span>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2 py-1 rounded bg-surface-stone text-text-pine font-caption-xs text-caption-xs whitespace-nowrap">Wood Oven</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-2">
+<button class="w-10 h-5 rounded-full bg-status-ready relative p-0.5 transition-colors" type="button">
+<div class="w-4 h-4 rounded-full bg-surface-porcelain translate-x-5 transition-transform shadow-xs"></div>
+</button>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">In Stock</span>
+</div>
+</td>
+<td class="py-4 pr-4 pl-2 align-middle text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Burrata & Charred Peach Salad -->
+<tr class="hover:bg-surface-oat/50 transition-colors cursor-pointer group">
+<td class="py-4 pl-4 pr-2 align-middle">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover shadow-xs shrink-0" data-alt="Creamy burrata cheese torn open with charred yellow peach slices, wild rocket, toasted pistachios, and aged balsamic reduction on handmade pottery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiVznuCzBGOm37g0pvSDkZ-3Y6mlYx0fc40oY2Ud9NilPUhubXzKehmdEGyzIyaEvdU6SYT3izHsYZRdop6y8SGqSMA8vqgo4nl66wz6w-pMwNqVf02tAf6_WLbFN4JYNzyhsV23HgRWEJmQUJJzfPUfBAlj3duqv00WbFh7_o3ji4x1YUTe3BCckHncabeyptbXcxP28SYP2rrrjMbtYk2svn3_drMpISAqE4gpPr"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-body-bold text-body-bold text-text-pine truncate">Burrata &amp; Charred Peach</span>
+<span class="px-2 py-0.5 rounded bg-primary-container text-primary font-caption-xs text-caption-xs">Vegetarian</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-text-olive truncate">Local burrata, wood-charred peaches, pistachio crumble</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2.5 py-1 rounded-md bg-surface-oat text-text-pine font-caption-xs text-caption-xs font-semibold whitespace-nowrap">Starters &amp; Plates</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-text-pine font-bold">R 140.00</span>
+<button class="text-outline hover:text-text-pine opacity-0 group-hover:opacity-100 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-3 align-middle whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-caption-xs text-caption-xs text-text-pine font-medium">R 42.00 cost</span>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">70.0% Margin</span>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2 py-1 rounded bg-surface-stone text-text-pine font-caption-xs text-caption-xs whitespace-nowrap">Cold Pass</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-2">
+<button class="w-10 h-5 rounded-full bg-status-ready relative p-0.5 transition-colors" type="button">
+<div class="w-4 h-4 rounded-full bg-surface-porcelain translate-x-5 transition-transform shadow-xs"></div>
+</button>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">In Stock</span>
+</div>
+</td>
+<td class="py-4 pr-4 pl-2 align-middle text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Artisanal Rooibos & Citrus Iced Tea -->
+<tr class="hover:bg-surface-oat/50 transition-colors cursor-pointer group">
+<td class="py-4 pl-4 pr-2 align-middle">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover shadow-xs shrink-0" data-alt="Tall condensation glass of cold brewed red rooibos iced tea garnished with dehydrated blood orange wheel and fresh mint sprig on raw stone table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSab4gcZkZHNJ8tJecyUuWfvu35gZHjDziTkLW6l5klLoLHcHkQiGaWMJV6yuL2OjYfLk0BV6hQudm1W_frcPIPq9XLJgRTd5alsd9SV0DOnBXSVo_eYsDUq-UJjkWFYs2zsd8D1yUZulEbfpoPJafxg65TRGH-G5H_htXESZ2sjQib5_C_BfzbYGUWdILm8TvxHedkCl0kC83sbmJsvMMpSgdxTQyGfpZC3PP1Lun"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-body-bold text-body-bold text-text-pine truncate">Artisanal Rooibos &amp; Citrus</span>
+<span class="px-2 py-0.5 rounded bg-surface-stone text-text-pine font-caption-xs text-caption-xs">Beverage</span>
+</div>
+<span class="font-caption-xs text-caption-xs text-text-olive truncate">Cold-steeped Cederberg rooibos, blood orange, wildflower honey</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2.5 py-1 rounded-md bg-surface-oat text-text-pine font-caption-xs text-caption-xs font-semibold whitespace-nowrap">Beverages</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-text-pine font-bold">R 45.00</span>
+<button class="text-outline hover:text-text-pine opacity-0 group-hover:opacity-100 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-3 align-middle whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-caption-xs text-caption-xs text-text-pine font-medium">R 6.20 cost</span>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">86.2% Margin</span>
+</div>
+</td>
+<td class="py-4 px-3 align-middle">
+<span class="px-2 py-1 rounded bg-surface-stone text-text-pine font-caption-xs text-caption-xs whitespace-nowrap">Bar / Dispense</span>
+</td>
+<td class="py-4 px-3 align-middle">
+<div class="flex items-center gap-2">
+<button class="w-10 h-5 rounded-full bg-status-ready relative p-0.5 transition-colors" type="button">
+<div class="w-4 h-4 rounded-full bg-surface-porcelain translate-x-5 transition-transform shadow-xs"></div>
+</button>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">In Stock</span>
+</div>
+</td>
+<td class="py-4 pr-4 pl-2 align-middle text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+<button class="p-1.5 rounded-lg text-text-olive hover:bg-surface-oat hover:text-text-pine" type="button">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-4 py-3 bg-surface-oat flex items-center justify-between text-text-olive font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span>Showing <span class="font-semibold text-text-pine">1 to 6</span> of 28 dishes</span>
+<span class="text-outline">•</span>
+<span class="font-caption-xs text-caption-xs text-status-ready font-semibold">QR Sync Active</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1.5 rounded-lg bg-surface-porcelain text-text-pine hover:bg-surface-stone disabled:opacity-40 text-caption-xs font-semibold shadow-xs" type="button">Previous</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary text-caption-xs font-semibold" type="button">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-porcelain text-text-pine hover:bg-surface-stone text-caption-xs font-semibold" type="button">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-porcelain text-text-pine hover:bg-surface-stone text-caption-xs font-semibold" type="button">3</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-porcelain text-text-pine hover:bg-surface-stone text-caption-xs font-semibold shadow-xs" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. PERSISTENT SLIDE-OUT EDIT DRAWER (~420px wide) -->
+<div class="w-full xl:w-[420px] shrink-0 bg-surface-porcelain rounded-xl shadow-md flex flex-col overflow-hidden">
+<!-- Drawer Header -->
+<div class="p-5 bg-surface-oat flex items-center justify-between">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-caption-xs text-caption-xs uppercase font-bold tracking-wider">SKU #M-104</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Last edited 2h ago</span>
+</div>
+<span class="font-title-sm text-title-sm text-text-pine mt-1">Edit Dish: Karoo Lamb</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-stone flex items-center justify-center text-text-olive transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- Drawer Scrollable Form Content -->
+<div class="p-5 flex flex-col gap-5 max-h-[calc(100vh-280px)] overflow-y-auto">
+<!-- Photo Replacement & Preview Zone -->
+<div class="flex flex-col gap-2">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Dish Photography</label>
+<div class="relative group rounded-xl overflow-hidden shadow-xs h-44 bg-surface-stone">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Close up photography of braised tender Karoo lamb shank plated with glossy demi-glace sauce, fresh thyme sprig, and golden polenta in restaurant dining lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8POTN_QOvKaMQCshuP5u2a9sOy54syGaWu_KwHTy-bH51206yPAACRmltqwmwnUArAl6XuIbNxU6gZvAKI2UjN2X9BChD_-zdXvIGRXrqZfPIbmIiiJnDDkWGVQ7pegxJLKcvfqkxiUEOY4miDKtMCp4EQ65oTTvgZv18KhEEx21nOGXa9mpLJ9zEyBaZeNRfkg4xMhdl02CycTigOkB1b0ECvNPGKselZmP2sot6"/>
+<div class="absolute inset-0 bg-text-pine/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-xs">
+<button class="px-3 py-1.5 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-label-sm flex items-center gap-1.5 shadow-sm hover:bg-surface-oat" type="button">
+<span class="material-symbols-outlined text-[16px]">photo_camera</span>
+<span>Change Photo</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-porcelain text-secondary hover:bg-surface-oat shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+</button>
+</div>
+<div class="absolute bottom-2 left-2 px-2 py-1 rounded bg-text-pine/70 backdrop-blur-sm text-on-primary font-caption-xs text-caption-xs">
+              1600 × 1200 • High Resolution
+            </div>
+</div>
+</div>
+<!-- 86'd / Sold-out Availability Switch Bar -->
+<div class="p-3.5 rounded-xl bg-status-ready-container/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-status-ready"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-pine">Dish Status: Available</span>
+<span class="font-caption-xs text-caption-xs text-text-olive">Visible on Guest QR &amp; Waiter tablets</span>
+</div>
+</div>
+<!-- Toggle switch -->
+<button class="w-12 h-6 rounded-full bg-status-ready relative p-0.5 transition-colors" type="button">
+<div class="w-5 h-5 rounded-full bg-surface-porcelain translate-x-6 transition-transform shadow-xs"></div>
+</button>
+</div>
+<!-- Form: Dish Name -->
+<div class="flex flex-col gap-1.5">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Dish Name (EN)</label>
+<input class="h-11 px-3.5 rounded-lg bg-surface-porcelain text-text-pine font-body-sm text-body-sm shadow-xs focus:outline-none focus:ring-2 focus:ring-primary-container" type="text" value="Braised Karoo Lamb Shank"/>
+</div>
+<!-- Category & Kitchen Station Grid -->
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1.5">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Category</label>
+<div class="relative">
+<select class="w-full h-11 px-3.5 pr-8 rounded-lg bg-surface-porcelain text-text-pine font-body-sm text-body-sm shadow-xs appearance-none focus:outline-none focus:ring-2 focus:ring-primary-container">
+<option selected="">Mains &amp; Grills</option>
+<option>Starters &amp; Plates</option>
+<option>Woodfired Pizza</option>
+<option>Sides &amp; Greens</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Kitchen Station</label>
+<div class="relative">
+<select class="w-full h-11 px-3.5 pr-8 rounded-lg bg-surface-porcelain text-text-pine font-body-sm text-body-sm shadow-xs appearance-none focus:outline-none focus:ring-2 focus:ring-primary-container">
+<option selected="">Wood Oven / Braise</option>
+<option>Charcoal Grill</option>
+<option>Sauté Pass</option>
+<option>Cold Kitchen</option>
+<option>Bar &amp; Cellar</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Pricing & COGS Row -->
+<div class="grid grid-cols-3 gap-2.5">
+<div class="flex flex-col gap-1.5">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Price (ZAR)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-olive font-label-sm text-label-sm">R</span>
+<input class="w-full h-11 pl-7 pr-2 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-label-sm font-bold shadow-xs focus:outline-none focus:ring-2 focus:ring-primary-container" type="text" value="245.00"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">COGS (ZAR)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-olive font-label-sm text-label-sm">R</span>
+<input class="w-full h-11 pl-7 pr-2 rounded-lg bg-surface-porcelain text-text-pine font-body-sm text-body-sm shadow-xs focus:outline-none focus:ring-2 focus:ring-primary-container" type="text" value="68.50"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Target Margin</label>
+<div class="h-11 px-3 rounded-lg bg-status-ready-container flex items-center justify-between text-status-ready font-label-sm text-label-sm font-bold">
+<span>72.0%</span>
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+</div>
+</div>
+</div>
+<!-- Prep Time & Caloric Meta -->
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1.5">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Prep / Firing Time</label>
+<div class="relative">
+<input class="w-full h-11 pl-9 pr-3 rounded-lg bg-surface-porcelain text-text-pine font-body-sm text-body-sm shadow-xs focus:outline-none focus:ring-2 focus:ring-primary-container" type="text" value="25 min"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">schedule</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Alcohol Pair Recommendation</label>
+<input class="h-11 px-3 rounded-lg bg-surface-porcelain text-text-pine font-body-sm text-body-sm shadow-xs focus:outline-none focus:ring-2 focus:ring-primary-container" type="text" value="Swartland Syrah"/>
+</div>
+</div>
+<!-- Dietary Multi-Select Chips -->
+<div class="flex flex-col gap-2">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Dietary &amp; Highlight Badges</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-full bg-primary text-on-primary font-caption-xs text-caption-xs flex items-center gap-1.5" type="button">
+<span>Chef's Special</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</button>
+<button class="px-3 py-1.5 rounded-full bg-primary text-on-primary font-caption-xs text-caption-xs flex items-center gap-1.5" type="button">
+<span>Gluten-Free</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</button>
+<button class="px-3 py-1.5 rounded-full bg-primary text-on-primary font-caption-xs text-caption-xs flex items-center gap-1.5" type="button">
+<span>Halal Friendly</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-stone text-text-pine hover:bg-surface-oat font-caption-xs text-caption-xs" type="button">
+<span>+ Vegetarian</span>
+</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-stone text-text-pine hover:bg-surface-oat font-caption-xs text-caption-xs" type="button">
+<span>+ Nut-Free</span>
+</button>
+</div>
+</div>
+<!-- Description Textarea -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Guest Facing Description</label>
+<span class="font-caption-xs text-caption-xs text-outline">98 / 180 chars</span>
+</div>
+<textarea class="p-3 rounded-lg bg-surface-porcelain text-text-pine font-body-sm text-body-sm shadow-xs focus:outline-none focus:ring-2 focus:ring-primary-container leading-relaxed" rows="3">Slow-cooked for seven hours with rosemary jus, creamy heirloom polenta &amp; roasted seasonal heirloom vegetables.</textarea>
+</div>
+<!-- Modifiers & Upsell Add-ons -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="font-caption-xs text-caption-xs uppercase tracking-wider text-text-olive font-semibold">Modifiers &amp; Add-ons (2)</label>
+<button class="text-secondary font-caption-xs text-caption-xs font-bold hover:underline flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span> Add Add-on
+            </button>
+</div>
+<div class="flex flex-col gap-2">
+<div class="p-2.5 rounded-lg bg-surface-stone flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[16px]">drag_indicator</span>
+<span class="font-body-sm text-body-sm text-text-pine">Extra Rosemary Jus</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-sm text-label-sm text-text-pine font-semibold">+R 25.00</span>
+<button class="text-outline hover:text-secondary text-[16px]" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-stone flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[16px]">drag_indicator</span>
+<span class="font-body-sm text-body-sm text-text-pine">Substitute Truffle Mash</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-sm text-label-sm text-text-pine font-semibold">+R 35.00</span>
+<button class="text-outline hover:text-secondary text-[16px]" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Bottom Action Footer -->
+<div class="p-4 bg-surface-oat flex items-center justify-between gap-3 shadow-inner">
+<button class="px-3 py-2 rounded-lg text-secondary hover:bg-secondary-container hover:text-on-secondary-container transition-colors font-label-sm text-label-sm flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>Delete Dish</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="px-4 py-2.5 rounded-lg bg-surface-porcelain text-text-pine font-label-sm text-label-sm hover:bg-surface-stone shadow-xs transition-all" type="button">
+            Cancel
+          </button>
+<button class="px-5 py-2.5 rounded-lg bg-secondary text-on-secondary font-label-sm text-label-sm hover:opacity-90 shadow-xs transition-all flex items-center gap-1.5 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Save Dish</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>
