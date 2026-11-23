@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | **Live app** | _TBD (add link after deploy)_ |
-| **Stitch designs** | _TBD (add Stitch link)_ |
+| **Stitch designs** | _https://stitch.google.com/projects/16023701479920816221_ |
 | **Test logins** | _TBD (guest: scan any table QR; waiter, kitchen and manager accounts to be added)_ |
 
 ## Docs
