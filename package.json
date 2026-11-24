@@ -34,6 +34,7 @@
     "eslint-config-prettier": "^10.1.8",
     "jsdom": "^31.0.1",
     "prettier": "^3.10.1",
+    "supabase": "^3.3.0",
     "tailwindcss": "4.3.3",
     "typescript": "^5",
     "vitest": "^5.1.1"
