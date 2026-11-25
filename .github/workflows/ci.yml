@@ -28,10 +28,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: supabase/setup-cli@v1
+      - uses: actions/setup-node@v4
         with:
-          version: latest
+          node-version: 22
+          cache: npm
+      - run: npm ci
       - name: Start local Supabase
-        run: supabase start -x studio,imgproxy,edge-runtime,logflare,vector,mailpit
+        run: npx supabase start -x studio,imgproxy,edge-runtime,logflare,vector,mailpit
       - name: Run RLS tests
-        run: supabase test db
+        run: npx supabase test db
