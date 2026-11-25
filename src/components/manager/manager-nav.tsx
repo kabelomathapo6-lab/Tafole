@@ -4,7 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 
-const LINKS = [{ href: "/manager/menu", label: "Menu" }];
+const LINKS = [
+  { href: "/manager/menu", label: "Menu" },
+  { href: "/manager/tables", label: "Tables" },
+];
 
 export function ManagerNav() {
   const pathname = usePathname();
