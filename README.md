@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Live app** | _TBD (add link after deploy)_ |
+| **Live app** | _https://tafole.vercel.app_ | tafole.vercel.app/login
 | **Stitch designs** | _https://stitch.google.com/projects/16023701479920816221_ |
 | **Test logins** | _Manager: manager@tafole.test, waiter: waiter@tafole.test, kitchen: kitchen@tafole.test (password: <Test2026>). Guests need no login: scan any table QR._ |
 
