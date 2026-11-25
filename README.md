@@ -6,7 +6,7 @@
 |---|---|
 | **Live app** | _TBD (add link after deploy)_ |
 | **Stitch designs** | _https://stitch.google.com/projects/16023701479920816221_ |
-| **Test logins** | _TBD (guest: scan any table QR; waiter, kitchen and manager accounts to be added)_ |
+| **Test logins** | _Manager: manager@tafole.test, waiter: waiter@tafole.test, kitchen: kitchen@tafole.test (password: <Test2026>). Guests need no login: scan any table QR._ |
 
 ## Docs
 - [Business overview](BUSINESS.md)
