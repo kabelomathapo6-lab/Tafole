@@ -12,7 +12,7 @@
 - [Business overview](BUSINESS.md)
 - [PRD](docs/PRD.md)
 - [Designs](docs/designs/)
-- [Implementation plan](IMPLEMENTATION_PLAN.md) _(coming 15:30)_
+- [Implementation plan](IMPLEMENTATION_PLAN.md) 
 
 ## Screenshots
 _TBD_
@@ -24,10 +24,10 @@ Next.js, TypeScript, Tailwind, Supabase (Postgres, Auth, Realtime, RLS), Vitest,
 _TBD (add diagram: guest PWA and staff app, Next.js, Supabase with RLS and Realtime)._
 
 ## Run locally
-_TBD_
+Runs locally http://localhost:3000/login
 
 ## Run tests
 _TBD_
 
 ## Known issues
-_TBD_
+NA
