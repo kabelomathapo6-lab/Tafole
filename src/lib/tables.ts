@@ -6,21 +6,25 @@ export type RestaurantTable = {
   qr_token: string;
 };
 
-export type TableSection = {
+export type TableSection<
+  T extends { label: string; area: string | null } = RestaurantTable,
+> = {
   area: string | null;
   name: string;
-  tables: RestaurantTable[];
+  tables: T[];
 };
 
 const natural = (a: string, b: string) =>
   a.localeCompare(b, undefined, { numeric: true });
 
 /** Group tables by dining area (A to Z), tables with no area last. "Table 2" sorts before "Table 10". */
-export function groupTables(tables: RestaurantTable[]): TableSection[] {
+export function groupTables<T extends { label: string; area: string | null }>(
+  tables: T[],
+): TableSection<T>[] {
   const areas = [
     ...new Set(tables.map((t) => t.area).filter((a): a is string => !!a)),
   ].sort(natural);
-  const sections: TableSection[] = areas.map((area) => ({
+  const sections: TableSection<T>[] = areas.map((area) => ({
     area,
     name: area,
     tables: tables
