@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
-import type { FloorTable, StaffOrder } from "@/lib/floor";
+import type { FloorTable, StaffOrder, StaffRequest } from "@/lib/floor";
 import type { OrderStatus } from "@/lib/order-status";
 import { loadFloor, subscribeToFloor } from "@/lib/staff-api";
 
@@ -25,6 +25,7 @@ export function useFloor(statuses: OrderStatus[]) {
   const [data, setData] = useState<{
     tables: FloorTable[];
     orders: StaffOrder[];
+    requests: StaffRequest[];
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
 

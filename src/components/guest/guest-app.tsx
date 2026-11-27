@@ -9,10 +9,13 @@ import {
   InvalidTableError,
   loadGuestMenu,
   loadOrders,
+  loadRequests,
   placeOrder,
+  requestService,
   startSession,
   subscribeToOrders,
   type GuestOrder,
+  type GuestRequest,
   type GuestSession,
 } from "@/lib/guest-api";
 import {
@@ -28,6 +31,7 @@ import {
 import type { MenuCategory, MenuItem } from "@/lib/menu";
 import { formatRand } from "@/lib/money";
 import { CartSheet } from "./cart-sheet";
+import { HelpBar } from "./help-bar";
 import { MenuList } from "./menu-list";
 import { OrdersView } from "./orders-view";
 
@@ -80,6 +84,9 @@ export function GuestApp({ token }: { token: string }) {
   >({ status: "loading" });
   const [reloadKey, setReloadKey] = useState(0);
   const [orders, setOrders] = useState<GuestOrder[]>([]);
+  const [requests, setRequests] = useState<GuestRequest[]>([]);
+  const [requesting, setRequesting] = useState(false);
+  const [requestError, setRequestError] = useState<string | null>(null);
   const [cart, setCart] = useState<CartLine[]>(() =>
     typeof window === "undefined" ? [] : readCart(token),
   );
@@ -110,12 +117,14 @@ export function GuestApp({ token }: { token: string }) {
         const supabase = getClient();
         await ensureGuestSession(supabase);
         const session = await startSession(supabase, token);
-        const [menu, existingOrders] = await Promise.all([
+        const [menu, existingOrders, existingRequests] = await Promise.all([
           loadGuestMenu(supabase, session),
           loadOrders(supabase, session.id),
+          loadRequests(supabase, session.id),
         ]);
         if (cancelled) return;
         setOrders(existingOrders);
+        setRequests(existingRequests);
         setCart((current) => reconcileCart(current, menu.items));
         setState({ status: "ready", data: { session, ...menu } });
       } catch (error) {
@@ -142,10 +151,16 @@ export function GuestApp({ token }: { token: string }) {
     if (!sessionId) return;
     const supabase = getClient();
     const refresh = () => {
-      loadOrders(supabase, sessionId)
-        .then(setOrders)
+      Promise.all([
+        loadOrders(supabase, sessionId),
+        loadRequests(supabase, sessionId),
+      ])
+        .then(([nextOrders, nextRequests]) => {
+          setOrders(nextOrders);
+          setRequests(nextRequests);
+        })
         .catch(() => {
-          // keep showing the last known orders; the next refresh will try again
+          // keep showing the last known state; the next refresh will try again
         });
     };
     const unsubscribe = subscribeToOrders(supabase, sessionId, refresh);
@@ -189,6 +204,25 @@ export function GuestApp({ token }: { token: string }) {
 
   const { data } = state;
   const count = cartCount(cart);
+
+  async function askFor(type: "waiter" | "bill") {
+    if (requesting) return;
+    setRequesting(true);
+    setRequestError(null);
+    try {
+      const supabase = getClient();
+      await requestService(supabase, data.session.id, type);
+      setRequests(await loadRequests(supabase, data.session.id));
+    } catch (error) {
+      setRequestError(
+        error instanceof Error
+          ? error.message
+          : "Could not send your request. Try again.",
+      );
+    } finally {
+      setRequesting(false);
+    }
+  }
 
   async function submitOrder() {
     if (placing || cart.length === 0) return;
@@ -243,6 +277,12 @@ export function GuestApp({ token }: { token: string }) {
               My orders{orders.length > 0 ? ` (${orders.length})` : ""}
             </Chip>
           </div>
+          <HelpBar
+            requests={requests}
+            busy={requesting}
+            error={requestError}
+            onRequest={(type) => void askFor(type)}
+          />
         </div>
       </header>
 

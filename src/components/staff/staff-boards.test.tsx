@@ -3,7 +3,7 @@ import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { WaiterBoard } from "./waiter-board";
 import { KitchenBoard } from "./kitchen-board";
-import type { FloorTable, StaffOrder } from "@/lib/floor";
+import type { FloorTable, StaffOrder, StaffRequest } from "@/lib/floor";
 
 vi.mock("@/lib/supabase/client", () => ({ createClient: () => ({}) }));
 vi.mock("@/components/auth/sign-out-button", () => ({
@@ -15,6 +15,7 @@ const api = vi.hoisted(() => ({
   setOrderStatus: vi.fn(),
   setItemQuantity: vi.fn(),
   removeItem: vi.fn(),
+  setRequestStatus: vi.fn(),
   subscribeToFloor: vi.fn(),
 }));
 vi.mock("@/lib/staff-api", () => api);
@@ -50,8 +51,18 @@ const order = (over: Partial<StaffOrder>): StaffOrder => ({
 
 let onChange: () => void;
 
-function floor(orders: StaffOrder[]) {
-  api.loadFloor.mockResolvedValue({ tables, orders });
+const request = (over: Partial<StaffRequest> = {}): StaffRequest => ({
+  id: "r1",
+  table_id: "t1",
+  type: "waiter",
+  status: "open",
+  created_at: minutesAgo(4),
+  acknowledged_at: null,
+  ...over,
+});
+
+function floor(orders: StaffOrder[], requests: StaffRequest[] = []) {
+  api.loadFloor.mockResolvedValue({ tables, orders, requests });
 }
 
 beforeEach(() => {
@@ -59,6 +70,7 @@ beforeEach(() => {
   api.setOrderStatus.mockResolvedValue(undefined);
   api.setItemQuantity.mockResolvedValue(undefined);
   api.removeItem.mockResolvedValue(undefined);
+  api.setRequestStatus.mockResolvedValue(undefined);
   api.subscribeToFloor.mockImplementation(
     (_client: unknown, cb: () => void) => {
       onChange = cb;
@@ -230,6 +242,100 @@ describe("WaiterBoard", () => {
     expect(
       await screen.findByRole("button", { name: "Table 1, New order" }),
     ).toBeInTheDocument();
+  });
+});
+
+describe("WaiterBoard requests", () => {
+  it("lists guest requests with how long they have waited", async () => {
+    floor(
+      [],
+      [
+        request({ type: "waiter" }),
+        request({
+          id: "r2",
+          table_id: "t2",
+          type: "bill",
+          created_at: minutesAgo(9),
+        }),
+      ],
+    );
+    render(<WaiterBoard />);
+
+    const list = await screen.findByRole("region", { name: "Requests" });
+    const items = within(list).getAllByRole("listitem");
+    expect(items[0]).toHaveTextContent("Table 2: Bill");
+    expect(items[0]).toHaveTextContent("waiting 9 min");
+    expect(items[1]).toHaveTextContent("Table 1: Call waiter");
+  });
+
+  it("shows an empty message when nobody needs the waiter", async () => {
+    floor([]);
+    render(<WaiterBoard />);
+    expect(
+      await screen.findByText("No guests are asking for you."),
+    ).toBeInTheDocument();
+  });
+
+  it("acknowledges a request, then resolves it", async () => {
+    floor([], [request()]);
+    const user = userEvent.setup();
+    render(<WaiterBoard />);
+
+    await user.click(
+      await screen.findByRole("button", { name: "On my way to Table 1" }),
+    );
+    expect(api.setRequestStatus).toHaveBeenCalledWith({}, "r1", "acknowledged");
+    await user.click(
+      screen.getByRole("button", { name: "Done with Table 1 waiter" }),
+    );
+    expect(api.setRequestStatus).toHaveBeenCalledWith({}, "r1", "resolved");
+  });
+
+  it("does not offer 'On my way' once a request is acknowledged", async () => {
+    floor(
+      [],
+      [request({ status: "acknowledged", acknowledged_at: minutesAgo(1) })],
+    );
+    render(<WaiterBoard />);
+    const list = await screen.findByRole("region", { name: "Requests" });
+    expect(
+      within(list).queryByRole("button", { name: /On my way/ }),
+    ).not.toBeInTheDocument();
+    expect(within(list).getByText(/on the way/)).toBeInTheDocument();
+  });
+
+  it("marks tables on the floor as needing the waiter or asking for the bill", async () => {
+    floor(
+      [],
+      [
+        request({ table_id: "t1", type: "waiter" }),
+        request({ id: "r2", table_id: "t2", type: "bill" }),
+      ],
+    );
+    render(<WaiterBoard />);
+    expect(
+      await screen.findByRole("button", { name: "Table 1, Needs waiter" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Table 2, Bill requested" }),
+    ).toBeInTheDocument();
+  });
+
+  it("shows a message when someone else already handled the request", async () => {
+    floor([], [request()]);
+    api.setRequestStatus.mockRejectedValue(
+      new Error(
+        "That request was just handled by someone else. The list has been refreshed.",
+      ),
+    );
+    const user = userEvent.setup();
+    render(<WaiterBoard />);
+    await user.click(
+      await screen.findByRole("button", { name: "Done with Table 1 waiter" }),
+    );
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      "handled by someone else",
+    );
   });
 });
 

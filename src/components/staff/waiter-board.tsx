@@ -8,13 +8,20 @@ import {
   ordersByTable,
   tableState,
   type StaffOrder,
+  type StaffRequest,
   type TableState,
 } from "@/lib/floor";
 import { formatRand } from "@/lib/money";
 import { statusMessage } from "@/lib/order-status";
 import type { OrderStatus } from "@/lib/order-status";
 import { groupTables } from "@/lib/tables";
-import { removeItem, setItemQuantity, setOrderStatus } from "@/lib/staff-api";
+import {
+  removeItem,
+  setItemQuantity,
+  setOrderStatus,
+  setRequestStatus,
+} from "@/lib/staff-api";
+import { RequestsList } from "./requests-list";
 import { StaffHeader } from "./staff-header";
 import { useFloor } from "./use-floor";
 import { useNow } from "./use-now";
@@ -26,21 +33,27 @@ const STATE_LABEL: Record<TableState, string> = {
   ordered: "New order",
   waiting: "In kitchen",
   ready: "Ready to serve",
+  called: "Needs waiter",
+  bill: "Bill requested",
 };
 const STATE_PILL: Record<
   TableState,
-  "empty" | "ordered" | "waiting" | "ready"
+  "empty" | "ordered" | "waiting" | "ready" | "bill"
 > = {
   empty: "empty",
   ordered: "ordered",
   waiting: "waiting",
   ready: "ready",
+  called: "bill",
+  bill: "bill",
 };
 const STATE_BAR: Record<TableState, string> = {
   empty: "bg-status-empty-soft",
   ordered: "bg-status-ordered",
   waiting: "bg-status-waiting",
   ready: "bg-status-ready",
+  called: "bg-status-bill",
+  bill: "bg-status-bill",
 };
 
 const stepButton =
@@ -211,6 +224,16 @@ export function WaiterBoard() {
   const [notice, setNotice] = useState<string | null>(null);
 
   const byTable = useMemo(() => ordersByTable(data?.orders ?? []), [data]);
+  const requestsByTable = useMemo(() => {
+    const map = new Map<string, StaffRequest[]>();
+    for (const request of data?.requests ?? []) {
+      map.set(request.table_id, [
+        ...(map.get(request.table_id) ?? []),
+        request,
+      ]);
+    }
+    return map;
+  }, [data]);
   const sections = useMemo(() => groupTables(data?.tables ?? []), [data]);
   const newOrders = useMemo(
     () => (data?.orders ?? []).filter((o) => o.status === "placed"),
@@ -259,6 +282,21 @@ export function WaiterBoard() {
 
       {data ? (
         <>
+          <RequestsList
+            requests={data.requests}
+            tables={data.tables}
+            now={now}
+            busy={busy}
+            onAcknowledge={(request) =>
+              void act(() =>
+                setRequestStatus(client(), request.id, "acknowledged"),
+              )
+            }
+            onResolve={(request) =>
+              void act(() => setRequestStatus(client(), request.id, "resolved"))
+            }
+          />
+
           <section aria-label="New orders" className="flex flex-col gap-3">
             <h2 className="font-display text-lg font-semibold">
               New orders{" "}
@@ -305,7 +343,10 @@ export function WaiterBoard() {
               </h2>
               <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
                 {section.tables.map((t) => {
-                  const state = tableState(byTable.get(t.id) ?? []);
+                  const state = tableState(
+                    byTable.get(t.id) ?? [],
+                    requestsByTable.get(t.id) ?? [],
+                  );
                   return (
                     <li key={t.id}>
                       <button

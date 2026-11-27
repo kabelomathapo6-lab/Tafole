@@ -6,6 +6,7 @@ import {
   tableState,
   ticketTone,
   type StaffOrder,
+  type StaffRequest,
 } from "./floor";
 
 const order = (over: Partial<StaffOrder>): StaffOrder => ({
@@ -34,6 +35,43 @@ describe("tableState", () => {
     ).toBe("ready");
     expect(tableState([order({ status: "confirmed" })])).toBe("waiting");
     expect(tableState([order({ status: "preparing" })])).toBe("waiting");
+  });
+});
+
+const request = (over: Partial<StaffRequest>): StaffRequest => ({
+  id: "r",
+  table_id: "t1",
+  type: "waiter",
+  status: "open",
+  created_at: "2026-11-25T12:00:00Z",
+  acknowledged_at: null,
+  ...over,
+});
+
+describe("tableState with service requests", () => {
+  it("shows a call for the waiter above everything else", () => {
+    expect(
+      tableState([order({ status: "placed" })], [request({ type: "waiter" })]),
+    ).toBe("called");
+  });
+
+  it("shows a bill request above orders", () => {
+    expect(
+      tableState([order({ status: "ready" })], [request({ type: "bill" })]),
+    ).toBe("bill");
+  });
+
+  it("puts a waiter call above a bill request", () => {
+    expect(
+      tableState(
+        [],
+        [request({ type: "bill" }), request({ id: "r2", type: "waiter" })],
+      ),
+    ).toBe("called");
+  });
+
+  it("is unchanged when there are no requests", () => {
+    expect(tableState([order({ status: "placed" })], [])).toBe("ordered");
   });
 });
 

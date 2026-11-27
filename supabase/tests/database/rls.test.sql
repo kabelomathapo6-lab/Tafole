@@ -1,5 +1,5 @@
 begin;
-select plan(29);
+select plan(38);
 
 -- Fixtures (run as the superuser, so RLS is bypassed) -------------------------
 insert into auth.users (id, email) values
@@ -127,6 +127,33 @@ select lives_ok($$update public.orders set status = 'preparing'$$, 'kitchen can 
 select throws_ok($$update public.orders set status = 'served'$$, null, null, 'kitchen cannot mark an order served');
 select pg_temp.logout();
 
+
+-- Service requests (call waiter, request bill) -------------------------------------
+select pg_temp.login_as('c0000000-0000-0000-0000-000000000001');  -- guest 1 (has an open waiter request)
+update public.service_requests set status = 'resolved';
+select is((select status::text from public.service_requests where type = 'waiter'), 'open', 'a guest cannot resolve requests directly');
+select pg_temp.logout();
+
+select pg_temp.login_as('a0000000-0000-0000-0000-000000000003');  -- kitchen
+update public.service_requests set status = 'acknowledged';
+select is((select status::text from public.service_requests where type = 'waiter'), 'open', 'kitchen cannot acknowledge requests');
+select pg_temp.logout();
+
+select pg_temp.login_as('b0000000-0000-0000-0000-000000000001');  -- manager B (other restaurant)
+select is((select count(*)::int from public.service_requests), 0, 'another restaurant cannot see these requests');
+select pg_temp.logout();
+
+select pg_temp.login_as('a0000000-0000-0000-0000-000000000002');  -- waiter A
+select lives_ok($$update public.service_requests set status = 'acknowledged' where type = 'waiter'$$, 'waiter can acknowledge a request');
+select is((select acknowledged_by from public.service_requests where type = 'waiter'), 'a0000000-0000-0000-0000-000000000002'::uuid, 'acknowledging records who did it');
+select ok((select acknowledged_at is not null from public.service_requests where type = 'waiter'), 'acknowledging stamps the time');
+select lives_ok($$update public.service_requests set status = 'resolved' where type = 'waiter'$$, 'waiter can resolve a request');
+select throws_ok($$update public.service_requests set status = 'open' where type = 'waiter'$$, '23514', null, 'a resolved request cannot be reopened');
+select pg_temp.logout();
+
+select pg_temp.login_as('c0000000-0000-0000-0000-000000000001');  -- guest 1 asks again after it was resolved
+select lives_ok(format($$select public.create_service_request(%L, 'waiter')$$, (select id from t_session)), 'a guest can ask again once the request is resolved');
+select pg_temp.logout();
 
 select * from finish();
 rollback;
