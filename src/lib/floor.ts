@@ -19,6 +19,17 @@ export type StaffOrder = {
   order_items: StaffOrderItem[];
 };
 
+export type RequestType = "waiter" | "bill";
+
+export type StaffRequest = {
+  id: string;
+  table_id: string;
+  type: RequestType;
+  status: "open" | "acknowledged";
+  created_at: string;
+  acknowledged_at: string | null;
+};
+
 export type FloorTable = {
   id: string;
   label: string;
@@ -26,13 +37,19 @@ export type FloorTable = {
   seats: number;
 };
 
-export type TableState = "empty" | "ordered" | "waiting" | "ready";
+export type TableState =
+  "empty" | "ordered" | "waiting" | "ready" | "called" | "bill";
 
 /**
- * What a waiter should see on a table tile. New orders (needing confirmation) come first, then
- * food ready to serve, then orders in the kitchen.
+ * What a waiter should see on a table tile, most urgent first: a call for the waiter, a bill request,
+ * a new order to confirm, food ready to serve, then orders in the kitchen.
  */
-export function tableState(orders: StaffOrder[]): TableState {
+export function tableState(
+  orders: StaffOrder[],
+  requests: StaffRequest[] = [],
+): TableState {
+  if (requests.some((r) => r.type === "waiter")) return "called";
+  if (requests.some((r) => r.type === "bill")) return "bill";
   if (orders.some((o) => o.status === "placed")) return "ordered";
   if (orders.some((o) => o.status === "ready")) return "ready";
   if (orders.some((o) => o.status === "confirmed" || o.status === "preparing"))

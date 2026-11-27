@@ -17,6 +17,8 @@ const api = vi.hoisted(() => {
     startSession: vi.fn(),
     loadGuestMenu: vi.fn(),
     loadOrders: vi.fn(),
+    loadRequests: vi.fn(),
+    requestService: vi.fn(),
     placeOrder: vi.fn(),
     subscribeToOrders: vi.fn(),
   };
@@ -93,6 +95,8 @@ beforeEach(() => {
     items: [soup, burger, lamb],
   });
   api.loadOrders.mockResolvedValue([]);
+  api.loadRequests.mockResolvedValue([]);
+  api.requestService.mockResolvedValue(undefined);
   api.subscribeToOrders.mockImplementation(
     (_client: unknown, _id: string, cb: () => void) => {
       onOrderChange = cb;
@@ -299,5 +303,95 @@ describe("GuestApp", () => {
     expect(
       screen.queryByRole("list", { name: "Order progress" }),
     ).not.toBeInTheDocument();
+  });
+
+  it("lets the guest call the waiter and shows that the request was sent", async () => {
+    const user = userEvent.setup();
+    render(<GuestApp token={TOKEN} />);
+    await screen.findByText("Tafole Demo Kitchen");
+
+    api.loadRequests.mockResolvedValue([
+      {
+        id: "r1",
+        type: "waiter",
+        status: "open",
+        created_at: "2026-11-25T12:00:00Z",
+      },
+    ]);
+    await user.click(screen.getByRole("button", { name: "Call waiter" }));
+
+    expect(api.requestService).toHaveBeenCalledWith({}, "s1", "waiter");
+    expect(
+      await screen.findByRole("button", { name: "Waiter called" }),
+    ).toBeDisabled();
+    expect(
+      screen.getByText("Your waiter has been notified."),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Request bill" })).toBeEnabled();
+  });
+
+  it("updates when the waiter acknowledges the request", async () => {
+    api.loadRequests.mockResolvedValue([
+      {
+        id: "r1",
+        type: "waiter",
+        status: "open",
+        created_at: "2026-11-25T12:00:00Z",
+      },
+    ]);
+    render(<GuestApp token={TOKEN} />);
+    expect(
+      await screen.findByText("Your waiter has been notified."),
+    ).toBeInTheDocument();
+
+    api.loadRequests.mockResolvedValue([
+      {
+        id: "r1",
+        type: "waiter",
+        status: "acknowledged",
+        created_at: "2026-11-25T12:00:00Z",
+      },
+    ]);
+    await act(async () => onOrderChange());
+    expect(
+      await screen.findByText("Your waiter is on the way."),
+    ).toBeInTheDocument();
+  });
+
+  it("lets the guest ask for the bill, and shows an open bill request after a refresh", async () => {
+    const user = userEvent.setup();
+    const { unmount } = render(<GuestApp token={TOKEN} />);
+    await screen.findByText("Tafole Demo Kitchen");
+    api.loadRequests.mockResolvedValue([
+      {
+        id: "b1",
+        type: "bill",
+        status: "open",
+        created_at: "2026-11-25T12:00:00Z",
+      },
+    ]);
+    await user.click(screen.getByRole("button", { name: "Request bill" }));
+    expect(api.requestService).toHaveBeenCalledWith({}, "s1", "bill");
+    expect(
+      await screen.findByText("Bill requested. Your waiter will bring it."),
+    ).toBeInTheDocument();
+    unmount();
+
+    render(<GuestApp token={TOKEN} />);
+    expect(
+      await screen.findByRole("button", { name: "Bill requested" }),
+    ).toBeDisabled();
+  });
+
+  it("shows a message and keeps the button usable when a request fails", async () => {
+    api.requestService.mockRejectedValue(
+      new Error("Could not send your request: offline"),
+    );
+    const user = userEvent.setup();
+    render(<GuestApp token={TOKEN} />);
+    await screen.findByText("Tafole Demo Kitchen");
+    await user.click(screen.getByRole("button", { name: "Call waiter" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("offline");
+    expect(screen.getByRole("button", { name: "Call waiter" })).toBeEnabled();
   });
 });

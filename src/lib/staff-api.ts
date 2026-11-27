@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { FloorTable, StaffOrder } from "./floor";
+import type { FloorTable, StaffOrder, StaffRequest } from "./floor";
 import type { OrderStatus } from "./order-status";
 
 const ORDER_COLUMNS =
@@ -10,21 +10,29 @@ export async function loadFloor(
   supabase: SupabaseClient,
   statuses: OrderStatus[],
 ) {
-  const [tables, orders] = await Promise.all([
+  const [tables, orders, requests] = await Promise.all([
     supabase.from("tables").select("id,label,area,seats").order("label"),
     supabase
       .from("orders")
       .select(ORDER_COLUMNS)
       .in("status", statuses)
       .order("created_at"),
+    supabase
+      .from("service_requests")
+      .select("id,table_id,type,status,created_at,acknowledged_at")
+      .in("status", ["open", "acknowledged"])
+      .order("created_at"),
   ]);
   if (tables.error)
     throw new Error(`Could not load tables: ${tables.error.message}`);
   if (orders.error)
     throw new Error(`Could not load orders: ${orders.error.message}`);
+  if (requests.error)
+    throw new Error(`Could not load requests: ${requests.error.message}`);
   return {
     tables: (tables.data ?? []) as FloorTable[],
     orders: (orders.data ?? []) as unknown as StaffOrder[],
+    requests: (requests.data ?? []) as StaffRequest[],
   };
 }
 
@@ -48,6 +56,30 @@ export async function setOrderStatus(
   }
   // Row Level Security hides rows the staff member may no longer change, so no row back means a conflict.
   if (!data) throw new Error(CONFLICT);
+}
+
+export async function setRequestStatus(
+  supabase: SupabaseClient,
+  id: string,
+  status: "acknowledged" | "resolved",
+) {
+  const { data, error } = await supabase
+    .from("service_requests")
+    .update({ status })
+    .eq("id", id)
+    .select("id")
+    .maybeSingle();
+  if (error) {
+    if (error.code === "23514")
+      throw new Error(
+        "That request was just handled by someone else. The list has been refreshed.",
+      );
+    throw new Error(`Could not update the request: ${error.message}`);
+  }
+  if (!data)
+    throw new Error(
+      "That request was just handled by someone else. The list has been refreshed.",
+    );
 }
 
 export async function setItemQuantity(
@@ -97,6 +129,11 @@ export function subscribeToFloor(
     .on(
       "postgres_changes",
       { event: "*", schema: "public", table: "order_items" },
+      onChange,
+    )
+    .on(
+      "postgres_changes",
+      { event: "*", schema: "public", table: "service_requests" },
       onChange,
     )
     .subscribe();

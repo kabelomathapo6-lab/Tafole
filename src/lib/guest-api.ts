@@ -30,6 +30,13 @@ export type GuestOrder = {
   order_items: GuestOrderItem[];
 };
 
+export type GuestRequest = {
+  id: string;
+  type: "waiter" | "bill";
+  status: "open" | "acknowledged" | "resolved";
+  created_at: string;
+};
+
 export type OrderLine = {
   menu_item_id: string;
   quantity: number;
@@ -129,7 +136,7 @@ export async function loadOrders(
   return (data ?? []) as unknown as GuestOrder[];
 }
 
-/** Calls onChange whenever one of this guest's orders (or its items) changes. Returns an unsubscribe function. */
+/** Calls onChange whenever one of this guest's orders, order items or service requests changes. Returns an unsubscribe function. */
 export function subscribeToOrders(
   supabase: SupabaseClient,
   sessionId: string,
@@ -152,8 +159,45 @@ export function subscribeToOrders(
       { event: "*", schema: "public", table: "order_items" },
       onChange,
     )
+    .on(
+      "postgres_changes",
+      {
+        event: "*",
+        schema: "public",
+        table: "service_requests",
+        filter: `session_id=eq.${sessionId}`,
+      },
+      onChange,
+    )
     .subscribe();
   return () => {
     void supabase.removeChannel(channel);
   };
+}
+
+/** Asks for the waiter or the bill. Asking again while a request is open returns the same request. */
+export async function requestService(
+  supabase: SupabaseClient,
+  sessionId: string,
+  type: "waiter" | "bill",
+): Promise<void> {
+  const { error } = await supabase.rpc("create_service_request", {
+    p_session_id: sessionId,
+    p_type: type,
+  });
+  if (error) throw new Error(`Could not send your request: ${error.message}`);
+}
+
+export async function loadRequests(
+  supabase: SupabaseClient,
+  sessionId: string,
+): Promise<GuestRequest[]> {
+  const { data, error } = await supabase
+    .from("service_requests")
+    .select("id,type,status,created_at")
+    .eq("session_id", sessionId)
+    .neq("status", "resolved")
+    .order("created_at");
+  if (error) throw new Error(`Could not load your requests: ${error.message}`);
+  return (data ?? []) as GuestRequest[];
 }
